@@ -443,10 +443,15 @@ body {
   font-size: 15px; font-weight: 900; color: var(--series-1);
   min-width: 24px; line-height: 1.3; flex-shrink: 0;
 }
-.task-info { display: grid; gap: 2px; }
+.task-info { display: grid; gap: 2px; flex: 1; }
 .task-title {
   font-size: 13px; font-weight: 700;
   color: var(--text-primary); line-height: 1.4;
+}
+.task-effect {
+  font-size: 11px; color: var(--text-muted);
+  line-height: 1.55; margin-top: 4px;
+  padding-top: 4px; border-top: 1px solid var(--gridline);
 }
 .task-scope {
   font-size: 11px; color: var(--text-muted); font-weight: 500;
@@ -1030,6 +1035,7 @@ body {
             <div class="task-info">
               <div class="task-title">AI 기반 통합 생산계획 및 수급 최적화</div>
               <div class="task-scope">내화물 · 라임화성</div>
+              <div class="task-effect">생산/원료 수급 데이터를 통합하여 AI가 수요를 예측하고 최적의 생산계획과 재고관리안을 자동 도출</div>
             </div>
           </div>
           <div class="ai-task">
@@ -1037,6 +1043,7 @@ body {
             <div class="task-info">
               <div class="task-title">스마트 팩토리 및 공정 자율 제어</div>
               <div class="task-scope">내화물</div>
+              <div class="task-effect">혼련~성형~소성 全 공정에 AI 제어를 도입, 자동 외관 검사(Vision)를 결합하여 품질편차 Zero와 에너지절감을 동시에 달성</div>
             </div>
           </div>
         </div>
@@ -1053,6 +1060,7 @@ body {
             <div class="task-info">
               <div class="task-title">AI 기반 전략영업 및 영업조직 혁신</div>
               <div class="task-scope">플랜트 · 내화물</div>
+              <div class="task-effect">수주 확률 예측과 최적 가격 산출을 지능화하고, AI 비서/멘토를 통해 베테랑의 노하우를 자산화하여 영업 생산성 극대화</div>
             </div>
           </div>
           <div class="ai-task">
@@ -1060,6 +1068,7 @@ body {
             <div class="task-info">
               <div class="task-title">통합 운영형 내화물 사업 모델</div>
               <div class="task-scope">노재정비</div>
+              <div class="task-effect">수주~정비~성과검증~청구 全과정을 AI가 관리해 단순 시공을 넘어 '결과를 보장하는 운영 서비스'로 사업 구조를 고도화</div>
             </div>
           </div>
         </div>
@@ -1076,6 +1085,7 @@ body {
             <div class="task-info">
               <div class="task-title">Plant 가상 시공 시뮬레이션 및 AI 안전 검증</div>
               <div class="task-scope">플랜트</div>
+              <div class="task-effect">디지털 트윈 기반의 가상 시공 시뮬레이션으로 최적 공기를 산출, AI가 영상 속 위험요소를 사전에 찾아 사고를 원천 차단</div>
             </div>
           </div>
           <div class="ai-task">
@@ -1083,6 +1093,7 @@ body {
             <div class="task-info">
               <div class="task-title">휴머노이드·자율로봇 기반 정비 무인화</div>
               <div class="task-scope">노재정비</div>
+              <div class="task-effect">고온·분진 등 고위험 현장에 로봇을 투입하여 축조 및 정비작업을 무인화하고 사람은 로봇을 관제하는 고숙련 전문가로 전환</div>
             </div>
           </div>
           <div class="ai-task">
@@ -1090,6 +1101,7 @@ body {
             <div class="task-info">
               <div class="task-title">고객사 협업형 로(爐) 미래 수명 예측</div>
               <div class="task-scope">노재정비</div>
+              <div class="task-effect">자사와 고객사 데이터를 연계해 로의 잔여 수명을 정량적으로 예측, 최적의 정비 시점을 도출해 가동률 제고</div>
             </div>
           </div>
           <div class="ai-task">
@@ -1097,6 +1109,7 @@ body {
             <div class="task-info">
               <div class="task-title">AI 기반 설비 예지정비 및 현장 지능화</div>
               <div class="task-scope">라임화성</div>
+              <div class="task-effect">설비의 이상 징후를 조기 감지하여 고장 예측, 현장 작업자에게 챗봇을 통해 실시간 정비 가이드를 제공</div>
             </div>
           </div>
         </div>
@@ -1113,6 +1126,7 @@ body {
             <div class="task-info">
               <div class="task-title">본부 손익전망 및 실적분석 자동화 시스템</div>
               <div class="task-scope">공통</div>
+              <div class="task-effect">사업별 데이터 기반 AI가 매출·영업이익을 선제적으로 전망 및 분석, 실무 담당자는 AI 전망값 검증/보완</div>
             </div>
           </div>
           <div class="ai-task">
@@ -1120,6 +1134,7 @@ body {
             <div class="task-info">
               <div class="task-title">지능형 재무 프로세스 자동화 및 실적 분석</div>
               <div class="task-scope">플랜트</div>
+              <div class="task-effect">계약부터 대금 수령까지 전 과정을 자동화하고 AI가 실적분석 및 시장 연계 전망을 수행하여 수익성 향상 전략 제안</div>
             </div>
           </div>
           <div class="ai-task">
@@ -1127,6 +1142,7 @@ body {
             <div class="task-info">
               <div class="task-title">통합 대시보드 운영 및 의사결정 지능화</div>
               <div class="task-scope">라임화성</div>
+              <div class="task-effect">분산된 운전/품질/원가 데이터를 통합해 KPI 변화 원인을 자동 분석, 관리자가 선제적 조치를 할 수 있도록 의사결정 지원</div>
             </div>
           </div>
         </div>
