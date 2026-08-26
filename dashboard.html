@@ -407,7 +407,7 @@ body {
 /* ─── AI task grid ─── */
 .ai-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 14px;
 }
 .ai-cat {
@@ -637,7 +637,6 @@ body {
 @media (max-width: 960px) {
   .kpi-row { grid-template-columns: repeat(3, 1fr); }
   .two-col, .three-col { grid-template-columns: 1fr; }
-  .ai-grid { grid-template-columns: 1fr; }
   .insight-box { grid-template-columns: 1fr; gap: 16px; }
   .insight-item { padding: 16px 0; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
   .insight-item:last-child { border-bottom: none; }
