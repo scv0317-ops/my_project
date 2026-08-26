@@ -632,6 +632,7 @@ body {
   .insight-item:last-child { border-bottom: none; }
   .scene-row { grid-template-columns: 1fr; }
   .scene-arrow { transform: rotate(90deg); justify-self: center; }
+  [style*="grid-template-columns:1fr 36px 1fr 160px"] { grid-template-columns: 1fr !important; }
 }
 @media (max-width: 560px) {
   .kpi-row { grid-template-columns: repeat(2, 1fr); }
@@ -736,11 +737,12 @@ body {
     <div class="scene-section">
 
       <!-- 플랜트 -->
-      <div class="scene-divider"><span class="scene-divider-text">플랜트 · 플랜트공사 관리 시스템</span></div>
-      <div class="scene-row">
+      <div class="scene-divider">
+        <span class="scene-divider-text" style="font-size:15px; font-weight:900; color:var(--series-1); letter-spacing:-0.01em;">플랜트공사 관리 시스템 <span style="font-size:11px; font-weight:600; color:var(--text-muted); margin-left:6px;">글로벌노재사업실</span></span>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 36px 1fr 160px; align-items:center; gap:0;">
         <div class="scene-card asis">
           <div class="scene-badge asis-badge">⚠ AS-IS</div>
-          <div class="scene-org">글로벌노재사업실</div>
           <div class="scene-title">일평균 30.0h 투입</div>
           <div class="scene-steps">
             <div class="scene-step pain">
@@ -748,65 +750,49 @@ body {
               <span>플랜트공사 관리 업무에 일평균 <strong>30.0시간</strong> 소요</span>
             </div>
           </div>
-          <div class="scene-visual" style="padding:14px 16px;">
-            <svg viewBox="0 0 260 80" width="100%" style="max-height:80px" aria-hidden="true">
-              <!-- clock face -->
-              <circle cx="60" cy="40" r="28" fill="#f0ede4" stroke="#c3c2b7" stroke-width="1.5"/>
-              <circle cx="60" cy="40" r="2" fill="#898781"/>
-              <line x1="60" y1="40" x2="60" y2="18" stroke="#898781" stroke-width="2" stroke-linecap="round"/>
-              <line x1="60" y1="40" x2="80" y2="48" stroke="#d03b3b" stroke-width="2" stroke-linecap="round"/>
-              <text x="60" y="74" text-anchor="middle" font-size="9" fill="#d03b3b" font-weight="bold" font-family="sans-serif">30.0h / 일</text>
-              <!-- person piling papers -->
-              <rect x="115" y="30" width="32" height="22" rx="2" fill="#e2e0d5" stroke="#c3c2b7" stroke-width="1"/>
-              <rect x="120" y="24" width="32" height="22" rx="2" fill="#e9e7de" stroke="#c3c2b7" stroke-width="1"/>
-              <rect x="125" y="18" width="32" height="22" rx="2" fill="#f0ede4" stroke="#c3c2b7" stroke-width="1"/>
-              <text x="141" y="31" text-anchor="middle" font-size="7" fill="#898781" font-family="sans-serif">공사서류</text>
-              <text x="141" y="57" text-anchor="middle" font-size="8" fill="#d03b3b" font-family="sans-serif">서류 적체</text>
-              <!-- arrow showing burden -->
-              <line x1="165" y1="40" x2="195" y2="40" stroke="#d03b3b" stroke-width="1.5" stroke-dasharray="4 3"/>
-              <polygon points="192,36 196,40 192,44" fill="#d03b3b"/>
-              <!-- stressed icon -->
-              <circle cx="220" cy="34" r="14" fill="#fde8d0" stroke="#eb6834" stroke-width="1.2"/>
-              <text x="220" y="38" text-anchor="middle" font-size="13" font-family="sans-serif">😓</text>
-              <text x="220" y="56" text-anchor="middle" font-size="8" fill="#d03b3b" font-family="sans-serif">업무 과부하</text>
-            </svg>
-          </div>
         </div>
         <div class="scene-arrow">→</div>
         <div class="scene-card tobe">
           <div class="scene-badge tobe-badge">✓ TO-BE</div>
-          <div class="scene-org">글로벌노재사업실</div>
-          <div class="scene-title highlight">플랜트공사 관리 시스템 구축 후 18.1h</div>
+          <div class="scene-title highlight">시스템 구축 후 18.1h</div>
           <div class="scene-steps">
             <div class="scene-step gain">
               <span class="step-icon">✓</span>
-              <span>시스템 구축으로 일평균 <strong>18.1시간</strong>으로 감축 (▼11.9h)</span>
+              <span>일평균 <strong>18.1시간</strong>으로 감축</span>
             </div>
           </div>
-          <div class="scene-visual" style="padding:14px 16px;">
-            <svg viewBox="0 0 260 80" width="100%" style="max-height:80px" aria-hidden="true">
-              <!-- before bar -->
-              <text x="8" y="22" font-size="9" fill="#898781" font-family="sans-serif">AS-IS</text>
-              <rect x="8" y="28" width="156" height="16" rx="4" fill="#c3c2b7"/>
-              <text x="170" y="40" font-size="9" fill="#898781" font-weight="bold" font-family="sans-serif">30.0h</text>
-              <!-- after bar -->
-              <text x="8" y="58" font-size="9" fill="#2a78d6" font-family="sans-serif">TO-BE</text>
-              <rect x="8" y="64" width="94" height="16" rx="4" fill="#2a78d6"/>
-              <text x="108" y="76" font-size="9" fill="#2a78d6" font-weight="bold" font-family="sans-serif">18.1h</text>
-              <!-- delta label -->
-              <rect x="210" y="32" width="44" height="22" rx="5" fill="#fde8d0" stroke="#eb6834" stroke-width="1"/>
-              <text x="232" y="44" text-anchor="middle" font-size="9" fill="#d03b3b" font-weight="bold" font-family="sans-serif">▼ 11.9h</text>
-            </svg>
+        </div>
+        <!-- 절감 그래프 -->
+        <div style="padding:14px 16px; background:var(--surface-page); border-radius:12px; border:1px solid var(--border); margin-left:12px;">
+          <div style="font-size:10px; font-weight:700; color:var(--text-muted); margin-bottom:10px; letter-spacing:0.05em; text-transform:uppercase;">시간 절감 효과</div>
+          <div style="display:grid; gap:6px;">
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-muted); margin-bottom:3px;"><span>AS-IS</span><span style="font-weight:700;">30.0h</span></div>
+              <div style="height:14px; background:var(--gridline); border-radius:3px; overflow:hidden;">
+                <div style="width:100%; height:100%; background:var(--baseline); border-radius:3px;"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--series-1); margin-bottom:3px;"><span>TO-BE</span><span style="font-weight:700;">18.1h</span></div>
+              <div style="height:14px; background:var(--gridline); border-radius:3px; overflow:hidden;">
+                <div style="width:60.3%; height:100%; background:var(--series-1); border-radius:3px;"></div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:12px; text-align:center; padding:8px; background:var(--surface-1); border-radius:8px; border:1px solid var(--border);">
+            <div style="font-size:22px; font-weight:900; color:var(--delta-dn); letter-spacing:-0.02em; line-height:1;">▼ 11.9h</div>
+            <div style="font-size:10px; color:var(--text-muted); margin-top:2px;">일평균 절감 · 39.7%</div>
           </div>
         </div>
       </div>
 
       <!-- 내화물 -->
-      <div class="scene-divider"><span class="scene-divider-text">내화물 · 내화물 조업 시스템 고도화</span></div>
-      <div class="scene-row">
+      <div class="scene-divider" style="margin-top:16px;">
+        <span class="scene-divider-text" style="font-size:15px; font-weight:900; color:var(--series-3); letter-spacing:-0.01em;">내화물 조업 시스템 고도화 <span style="font-size:11px; font-weight:600; color:var(--text-muted); margin-left:6px;">내화물사업실</span></span>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 36px 1fr 160px; align-items:center; gap:0;">
         <div class="scene-card asis">
           <div class="scene-badge asis-badge">⚠ AS-IS</div>
-          <div class="scene-org">내화물사업실</div>
           <div class="scene-title">일평균 12.8h 투입</div>
           <div class="scene-steps">
             <div class="scene-step pain">
@@ -814,59 +800,48 @@ body {
               <span>내화물 조업 관련 업무에 일평균 <strong>12.8시간</strong> 소요</span>
             </div>
           </div>
-          <div class="scene-visual" style="padding:14px 16px;">
-            <svg viewBox="0 0 260 80" width="100%" style="max-height:80px" aria-hidden="true">
-              <circle cx="60" cy="40" r="28" fill="#f0ede4" stroke="#c3c2b7" stroke-width="1.5"/>
-              <circle cx="60" cy="40" r="2" fill="#898781"/>
-              <line x1="60" y1="40" x2="60" y2="18" stroke="#898781" stroke-width="2" stroke-linecap="round"/>
-              <line x1="60" y1="40" x2="76" y2="30" stroke="#d03b3b" stroke-width="2" stroke-linecap="round"/>
-              <text x="60" y="74" text-anchor="middle" font-size="9" fill="#d03b3b" font-weight="bold" font-family="sans-serif">12.8h / 일</text>
-              <!-- furnace icon -->
-              <rect x="115" y="18" width="50" height="44" rx="5" fill="#fde8d0" stroke="#eb6834" stroke-width="1.2"/>
-              <rect x="125" y="26" width="30" height="28" rx="3" fill="#fbd0a8" stroke="#eb6834" stroke-width="1" opacity="0.8"/>
-              <text x="140" y="46" text-anchor="middle" font-size="12" font-family="sans-serif">🔥</text>
-              <text x="140" y="70" text-anchor="middle" font-size="7.5" fill="#898781" font-family="sans-serif">소성로 조업</text>
-              <!-- manual note -->
-              <rect x="182" y="24" width="42" height="36" rx="3" fill="#f5f3ee" stroke="#c3c2b7" stroke-width="1"/>
-              <line x1="190" y1="34" x2="216" y2="34" stroke="#c3c2b7" stroke-width="1"/>
-              <line x1="190" y1="40" x2="216" y2="40" stroke="#c3c2b7" stroke-width="1"/>
-              <line x1="190" y1="46" x2="208" y2="46" stroke="#c3c2b7" stroke-width="1"/>
-              <text x="203" y="68" text-anchor="middle" font-size="7" fill="#d03b3b" font-family="sans-serif">수작업 집계</text>
-            </svg>
-          </div>
         </div>
         <div class="scene-arrow">→</div>
-        <div class="scene-card tobe">
-          <div class="scene-badge tobe-badge">✓ TO-BE</div>
-          <div class="scene-org">내화물사업실</div>
-          <div class="scene-title highlight">조업 시스템 고도화 후 9.0h</div>
+        <div class="scene-card tobe" style="border-color:var(--series-3);">
+          <div class="scene-badge tobe-badge" style="background:var(--series-3);">✓ TO-BE</div>
+          <div class="scene-title highlight" style="color:var(--series-3);">시스템 고도화 후 9.0h</div>
           <div class="scene-steps">
             <div class="scene-step gain">
               <span class="step-icon">✓</span>
-              <span>시스템 고도화로 일평균 <strong>9.0시간</strong>으로 감축 (▼3.8h)</span>
+              <span>일평균 <strong>9.0시간</strong>으로 감축</span>
             </div>
           </div>
-          <div class="scene-visual" style="padding:14px 16px;">
-            <svg viewBox="0 0 260 80" width="100%" style="max-height:80px" aria-hidden="true">
-              <text x="8" y="22" font-size="9" fill="#898781" font-family="sans-serif">AS-IS</text>
-              <rect x="8" y="28" width="130" height="16" rx="4" fill="#c3c2b7"/>
-              <text x="144" y="40" font-size="9" fill="#898781" font-weight="bold" font-family="sans-serif">12.8h</text>
-              <text x="8" y="58" font-size="9" fill="#2a78d6" font-family="sans-serif">TO-BE</text>
-              <rect x="8" y="64" width="91" height="16" rx="4" fill="#2a78d6"/>
-              <text x="105" y="76" font-size="9" fill="#2a78d6" font-weight="bold" font-family="sans-serif">9.0h</text>
-              <rect x="210" y="32" width="44" height="22" rx="5" fill="#fde8d0" stroke="#eb6834" stroke-width="1"/>
-              <text x="232" y="44" text-anchor="middle" font-size="9" fill="#d03b3b" font-weight="bold" font-family="sans-serif">▼ 3.8h</text>
-            </svg>
+        </div>
+        <div style="padding:14px 16px; background:var(--surface-page); border-radius:12px; border:1px solid var(--border); margin-left:12px;">
+          <div style="font-size:10px; font-weight:700; color:var(--text-muted); margin-bottom:10px; letter-spacing:0.05em; text-transform:uppercase;">시간 절감 효과</div>
+          <div style="display:grid; gap:6px;">
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-muted); margin-bottom:3px;"><span>AS-IS</span><span style="font-weight:700;">12.8h</span></div>
+              <div style="height:14px; background:var(--gridline); border-radius:3px; overflow:hidden;">
+                <div style="width:100%; height:100%; background:var(--baseline); border-radius:3px;"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--series-3); margin-bottom:3px;"><span>TO-BE</span><span style="font-weight:700;">9.0h</span></div>
+              <div style="height:14px; background:var(--gridline); border-radius:3px; overflow:hidden;">
+                <div style="width:70.3%; height:100%; background:var(--series-3); border-radius:3px;"></div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:12px; text-align:center; padding:8px; background:var(--surface-1); border-radius:8px; border:1px solid var(--border);">
+            <div style="font-size:22px; font-weight:900; color:var(--delta-dn); letter-spacing:-0.02em; line-height:1;">▼ 3.8h</div>
+            <div style="font-size:10px; color:var(--text-muted); margin-top:2px;">일평균 절감 · 29.7%</div>
           </div>
         </div>
       </div>
 
       <!-- 노재정비 -->
-      <div class="scene-divider"><span class="scene-divider-text">노재정비 · 노재정비 업무 시스템 구축</span></div>
-      <div class="scene-row">
+      <div class="scene-divider" style="margin-top:16px;">
+        <span class="scene-divider-text" style="font-size:15px; font-weight:900; color:var(--series-2); letter-spacing:-0.01em;">노재정비 업무 시스템 구축 <span style="font-size:11px; font-weight:600; color:var(--text-muted); margin-left:6px;">노재정비사업실</span></span>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 36px 1fr 160px; align-items:center; gap:0;">
         <div class="scene-card asis">
           <div class="scene-badge asis-badge">⚠ AS-IS</div>
-          <div class="scene-org">노재정비사업실</div>
           <div class="scene-title">일평균 7.9h 투입</div>
           <div class="scene-steps">
             <div class="scene-step pain">
@@ -874,46 +849,37 @@ body {
               <span>노재정비 업무에 일평균 <strong>7.9시간</strong> 소요</span>
             </div>
           </div>
-          <div class="scene-visual" style="padding:14px 16px;">
-            <svg viewBox="0 0 260 80" width="100%" style="max-height:80px" aria-hidden="true">
-              <circle cx="60" cy="40" r="28" fill="#f0ede4" stroke="#c3c2b7" stroke-width="1.5"/>
-              <circle cx="60" cy="40" r="2" fill="#898781"/>
-              <line x1="60" y1="40" x2="60" y2="18" stroke="#898781" stroke-width="2" stroke-linecap="round"/>
-              <line x1="60" y1="40" x2="73" y2="26" stroke="#d03b3b" stroke-width="2" stroke-linecap="round"/>
-              <text x="60" y="74" text-anchor="middle" font-size="9" fill="#d03b3b" font-weight="bold" font-family="sans-serif">7.9h / 일</text>
-              <!-- furnace + scattered docs -->
-              <rect x="110" y="22" width="44" height="38" rx="5" fill="#f0ede4" stroke="#c3c2b7" stroke-width="1.2"/>
-              <text x="132" y="46" text-anchor="middle" font-size="13" font-family="sans-serif">🏭</text>
-              <text x="132" y="68" text-anchor="middle" font-size="7" fill="#898781" font-family="sans-serif">로(爐) 정비</text>
-              <rect x="165" y="18" width="32" height="22" rx="2" fill="#e2e0d5" stroke="#c3c2b7" stroke-width="1" transform="rotate(-6,181,29)"/>
-              <text x="181" y="31" text-anchor="middle" font-size="6.5" fill="#898781" font-family="sans-serif">이력서류</text>
-              <rect x="202" y="26" width="32" height="22" rx="2" fill="#e9e7de" stroke="#c3c2b7" stroke-width="1" transform="rotate(5,218,37)"/>
-              <text x="218" y="39" text-anchor="middle" font-size="6.5" fill="#898781" font-family="sans-serif">수첩메모</text>
-            </svg>
-          </div>
         </div>
         <div class="scene-arrow">→</div>
-        <div class="scene-card tobe">
-          <div class="scene-badge tobe-badge">✓ TO-BE</div>
-          <div class="scene-org">노재정비사업실</div>
-          <div class="scene-title highlight">업무 시스템 구축 후 4.2h</div>
+        <div class="scene-card tobe" style="border-color:var(--series-2);">
+          <div class="scene-badge tobe-badge" style="background:var(--series-2);">✓ TO-BE</div>
+          <div class="scene-title highlight" style="color:var(--series-2);">시스템 구축 후 4.2h</div>
           <div class="scene-steps">
             <div class="scene-step gain">
               <span class="step-icon">✓</span>
-              <span>시스템 구축으로 일평균 <strong>4.2시간</strong>으로 감축 (▼3.7h)</span>
+              <span>일평균 <strong>4.2시간</strong>으로 감축</span>
             </div>
           </div>
-          <div class="scene-visual" style="padding:14px 16px;">
-            <svg viewBox="0 0 260 80" width="100%" style="max-height:80px" aria-hidden="true">
-              <text x="8" y="22" font-size="9" fill="#898781" font-family="sans-serif">AS-IS</text>
-              <rect x="8" y="28" width="80" height="16" rx="4" fill="#c3c2b7"/>
-              <text x="94" y="40" font-size="9" fill="#898781" font-weight="bold" font-family="sans-serif">7.9h</text>
-              <text x="8" y="58" font-size="9" fill="#2a78d6" font-family="sans-serif">TO-BE</text>
-              <rect x="8" y="64" width="43" height="16" rx="4" fill="#2a78d6"/>
-              <text x="57" y="76" font-size="9" fill="#2a78d6" font-weight="bold" font-family="sans-serif">4.2h</text>
-              <rect x="210" y="32" width="44" height="22" rx="5" fill="#fde8d0" stroke="#eb6834" stroke-width="1"/>
-              <text x="232" y="44" text-anchor="middle" font-size="9" fill="#d03b3b" font-weight="bold" font-family="sans-serif">▼ 3.7h</text>
-            </svg>
+        </div>
+        <div style="padding:14px 16px; background:var(--surface-page); border-radius:12px; border:1px solid var(--border); margin-left:12px;">
+          <div style="font-size:10px; font-weight:700; color:var(--text-muted); margin-bottom:10px; letter-spacing:0.05em; text-transform:uppercase;">시간 절감 효과</div>
+          <div style="display:grid; gap:6px;">
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-muted); margin-bottom:3px;"><span>AS-IS</span><span style="font-weight:700;">7.9h</span></div>
+              <div style="height:14px; background:var(--gridline); border-radius:3px; overflow:hidden;">
+                <div style="width:100%; height:100%; background:var(--baseline); border-radius:3px;"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--series-2); margin-bottom:3px;"><span>TO-BE</span><span style="font-weight:700;">4.2h</span></div>
+              <div style="height:14px; background:var(--gridline); border-radius:3px; overflow:hidden;">
+                <div style="width:53.2%; height:100%; background:var(--series-2); border-radius:3px;"></div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:12px; text-align:center; padding:8px; background:var(--surface-1); border-radius:8px; border:1px solid var(--border);">
+            <div style="font-size:22px; font-weight:900; color:var(--delta-dn); letter-spacing:-0.02em; line-height:1;">▼ 3.7h</div>
+            <div style="font-size:10px; color:var(--text-muted); margin-top:2px;">일평균 절감 · 46.8%</div>
           </div>
         </div>
       </div>
