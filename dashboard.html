@@ -449,15 +449,20 @@ body {
   color: var(--text-primary); line-height: 1.4;
 }
 .task-effect {
-  font-size: 13px; color: var(--series-1);
-  line-height: 1.55; font-weight: 700;
-  padding: 7px 12px;
-  background: var(--seq-100);
-  border-radius: 6px;
-  border-left: 3px solid var(--series-1);
+  font-size: 13px; color: var(--text-primary);
+  line-height: 1.55; font-weight: 600;
+  padding: 8px 12px;
+  background: var(--surface-1);
+  border-radius: 8px;
+  border: 1.5px solid var(--series-1);
   flex-shrink: 0;
   width: 44%;
   align-self: center;
+}
+.task-effect-label {
+  font-size: 10px; font-weight: 800; color: var(--series-1);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  display: block; margin-bottom: 4px;
 }
 .task-scope {
   font-size: 11px; color: var(--text-muted); font-weight: 500;
@@ -1040,14 +1045,14 @@ body {
             <div class="task-info">
               <div class="task-title">(내화물·라임화성) AI 기반 통합 생산계획 및 수급 최적화</div>
             </div>
-            <div class="task-effect">AI 수요 예측 → 생산계획·재고관리 자동 도출</div>
+            <div class="task-effect"><span class="task-effect-label">기대효과</span>AI 수요 예측 → 생산계획·재고관리 자동 도출</div>
           </div>
           <div class="ai-task">
             <div class="task-num">02</div>
             <div class="task-info">
               <div class="task-title">(내화물) 스마트 팩토리 및 공정 자율 제어</div>
             </div>
-            <div class="task-effect">全공정 AI 제어 + Vision 검사 → 품질편차 Zero · 에너지절감</div>
+            <div class="task-effect"><span class="task-effect-label">기대효과</span>全공정 AI 제어 + Vision 검사 → 품질편차 Zero · 에너지절감</div>
           </div>
         </div>
       </div>
@@ -1063,14 +1068,14 @@ body {
             <div class="task-info">
               <div class="task-title">(플랜트·내화물) AI 기반 전략영업 및 영업조직 혁신</div>
             </div>
-            <div class="task-effect">수주 확률·최적가격 AI 산출 → 베테랑 노하우 자산화 · 영업 생산성 극대화</div>
+            <div class="task-effect"><span class="task-effect-label">기대효과</span>수주 확률·최적가격 AI 산출 → 베테랑 노하우 자산화 · 영업 생산성 극대화</div>
           </div>
           <div class="ai-task">
             <div class="task-num">04</div>
             <div class="task-info">
               <div class="task-title">(노재정비) 통합 운영형 내화물 사업 모델</div>
             </div>
-            <div class="task-effect">수주~정비~청구 全과정 AI 관리 → '결과 보장형 운영 서비스'로 고도화</div>
+            <div class="task-effect"><span class="task-effect-label">기대효과</span>수주~정비~청구 全과정 AI 관리 → '결과 보장형 운영 서비스'로 고도화</div>
           </div>
         </div>
       </div>
@@ -1086,28 +1091,28 @@ body {
             <div class="task-info">
               <div class="task-title">(플랜트) Plant 가상 시공 시뮬레이션 및 AI 안전 검증</div>
             </div>
-            <div class="task-effect">디지털 트윈으로 최적 공기 산출 → AI 영상 분석으로 위험요소 사전 차단</div>
+            <div class="task-effect"><span class="task-effect-label">기대효과</span>디지털 트윈으로 최적 공기 산출 → AI 영상 분석으로 위험요소 사전 차단</div>
           </div>
           <div class="ai-task">
             <div class="task-num">06</div>
             <div class="task-info">
               <div class="task-title">(노재정비) 휴머노이드·자율로봇 기반 정비 무인화</div>
             </div>
-            <div class="task-effect">고위험 현장 로봇 무인화 → 사람은 로봇 관제 고숙련 전문가로 전환</div>
+            <div class="task-effect"><span class="task-effect-label">기대효과</span>고위험 현장 로봇 무인화 → 사람은 로봇 관제 고숙련 전문가로 전환</div>
           </div>
           <div class="ai-task">
             <div class="task-num">07</div>
             <div class="task-info">
               <div class="task-title">(노재정비) 고객사 협업형 로(爐) 미래 수명 예측</div>
             </div>
-            <div class="task-effect">자사·고객사 데이터 연계 → 잔여 수명 정량 예측 · 최적 정비 시점 도출 · 가동률 제고</div>
+            <div class="task-effect"><span class="task-effect-label">기대효과</span>자사·고객사 데이터 연계 → 잔여 수명 정량 예측 · 최적 정비 시점 도출 · 가동률 제고</div>
           </div>
           <div class="ai-task">
             <div class="task-num">08</div>
             <div class="task-info">
               <div class="task-title">(라임화성) AI 기반 설비 예지정비 및 현장 지능화</div>
             </div>
-            <div class="task-effect">이상 징후 조기 감지·고장 예측 → 챗봇으로 실시간 정비 가이드 제공</div>
+            <div class="task-effect"><span class="task-effect-label">기대효과</span>이상 징후 조기 감지·고장 예측 → 챗봇으로 실시간 정비 가이드 제공</div>
           </div>
         </div>
       </div>
@@ -1123,21 +1128,21 @@ body {
             <div class="task-info">
               <div class="task-title">(공통) 본부 손익전망 및 실적분석 자동화 시스템</div>
             </div>
-            <div class="task-effect">AI가 매출·영업이익 선제 전망 → 담당자는 검증·보완에 집중</div>
+            <div class="task-effect"><span class="task-effect-label">기대효과</span>AI가 매출·영업이익 선제 전망 → 담당자는 검증·보완에 집중</div>
           </div>
           <div class="ai-task">
             <div class="task-num">10</div>
             <div class="task-info">
               <div class="task-title">(플랜트) 지능형 재무 프로세스 자동화 및 실적 분석</div>
             </div>
-            <div class="task-effect">계약~대금 全과정 자동화 → AI 실적분석·시장 전망으로 수익성 전략 제안</div>
+            <div class="task-effect"><span class="task-effect-label">기대효과</span>계약~대금 全과정 자동화 → AI 실적분석·시장 전망으로 수익성 전략 제안</div>
           </div>
           <div class="ai-task">
             <div class="task-num">11</div>
             <div class="task-info">
               <div class="task-title">(라임화성) 통합 대시보드 운영 및 의사결정 지능화</div>
             </div>
-            <div class="task-effect">운전·품질·원가 통합 → KPI 변화 원인 자동 분석 · 선제적 의사결정 지원</div>
+            <div class="task-effect"><span class="task-effect-label">기대효과</span>운전·품질·원가 통합 → KPI 변화 원인 자동 분석 · 선제적 의사결정 지원</div>
           </div>
         </div>
       </div>
