@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기초소재사업본부 · PI·AX 임원 보고</title>
+<style>
+/* ─── Design tokens ─── */
+:root {
+  --surface-1:      #fcfcfb;
+  --surface-page:   #f1f5f9;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #898781;
+  --gridline:       #e1e0d9;
+  --baseline:       #c3c2b7;
+  --border:         rgba(11,11,11,0.10);
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --series-5: #9b59b6;
+  --delta-up: #006300;
+  --delta-dn: #d03b3b;
+  --status-good: #0ca30c;
+  --seq-100: #cde2fb;
+  --seq-200: #9ec5f4;
+  --accent-dark: #1a2540;
+}
+[data-theme="dark"] {
+  --surface-1:      #1e2230;
+  --surface-page:   #13151f;
+  --text-primary:   #f0f0ee;
+  --text-secondary: #c3c2b7;
+  --text-muted:     #898781;
+  --gridline:       #2c2e3a;
+  --baseline:       #3a3c4a;
+  --border:         rgba(255,255,255,0.09);
+  --series-1: #4a9ae8;
+  --series-2: #f07a4a;
+  --series-3: #25c98a;
+  --series-4: #f5b820;
+  --series-5: #b07fd4;
+  --delta-dn: #ef5555;
+  --seq-100: #1d3a5c;
+  --seq-200: #2a5285;
+  --accent-dark: #0d1422;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif;
+  background: var(--surface-page);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── HEADER ─── */
+.dash-header {
+  background: linear-gradient(135deg, #1a2540 0%, #0f3460 60%, #16213e 100%);
+  color: #fff;
+  padding: 36px 40px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.dash-header::before {
+  content: "";
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(42,120,214,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.header-left { flex: 1; min-width: 0; }
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #7eaadc;
+  margin-bottom: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 24px; height: 2px;
+  background: #7eaadc;
+}
+.main-headline {
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 14px;
+}
+.main-headline em {
+  font-style: normal;
+  color: #7ed4f7;
+}
+.sub-headline {
+  font-size: 14px;
+  color: #94a3b8;
+  font-weight: 500;
+  line-height: 1.7;
+  max-width: 620px;
+}
+.sub-headline strong { color: #e2e8f0; font-weight: 700; }
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.report-date {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.theme-toggle {
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: #cbd5e1;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.theme-toggle:hover { background: rgba(255,255,255,0.18); }
+
+/* ─── Body layout ─── */
+.dash-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 24px 56px;
+  display: grid;
+  gap: 22px;
+}
+
+/* ─── Section title strip ─── */
+.section-strip {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.section-num {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--series-1);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.section-headline {
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+.section-headline em {
+  font-style: normal;
+  color: var(--series-1);
+}
+.section-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* ─── KPI row ─── */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+.kpi-tile {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 18px 18px;
+  position: relative;
+  overflow: hidden;
+}
+.kpi-tile::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--kpi-accent, var(--series-1));
+  border-radius: 14px 14px 0 0;
+}
+.kpi-label {
+  font-size: 11px; font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.kpi-value {
+  font-size: 34px; font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+.kpi-value .unit {
+  font-size: 14px; font-weight: 600;
+  color: var(--text-muted); margin-left: 2px;
+}
+.kpi-delta {
+  font-size: 13px; font-weight: 800;
+  color: var(--delta-dn);
+  margin-top: 4px;
+}
+.kpi-sub {
+  font-size: 11px; color: var(--text-muted); margin-top: 4px;
+}
+
+/* ─── Card ─── */
+.card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 26px 26px 22px;
+}
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; }
+
+/* ─── Insight box ─── */
+.insight-box {
+  background: linear-gradient(135deg, #1a2540 0%, #0f3460 100%);
+  border-radius: 14px;
+  padding: 24px 28px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.insight-item {
+  padding: 0 24px;
+  border-right: 1px solid rgba(255,255,255,0.10);
+}
+.insight-item:first-child { padding-left: 0; }
+.insight-item:last-child { border-right: none; }
+.insight-tag {
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #7eaadc; margin-bottom: 8px;
+}
+.insight-headline {
+  font-size: 15px; font-weight: 800;
+  color: #fff; line-height: 1.4;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.insight-body {
+  font-size: 12px; color: #94a3b8;
+  line-height: 1.65; font-weight: 500;
+}
+.insight-body strong { color: #e2e8f0; }
+
+/* ─── Dumbbell chart ─── */
+.dumbbell-chart { display: grid; gap: 20px; }
+.dumbbell-row { display: grid; gap: 7px; }
+.dumbbell-org {
+  font-size: 14px; font-weight: 700; color: var(--text-primary);
+}
+.dumbbell-track {
+  height: 10px; background: var(--gridline);
+  border-radius: 5px; position: relative; margin: 0 6px;
+}
+.dumbbell-connector {
+  position: absolute; height: 10px; top: 0;
+  background: var(--seq-100); border-radius: 0;
+}
+.dot-asis {
+  position: absolute; width: 14px; height: 14px;
+  border-radius: 50%; background: var(--baseline);
+  border: 2px solid var(--surface-1);
+  top: -2px; transform: translateX(-50%);
+}
+.dot-tobe {
+  position: absolute; width: 14px; height: 14px;
+  border-radius: 50%; background: var(--series-1);
+  border: 2px solid var(--surface-1);
+  top: -2px; transform: translateX(-50%);
+}
+.dumbbell-vals {
+  display: flex; justify-content: space-between;
+  font-size: 12px; font-variant-numeric: tabular-nums;
+}
+.val-asis { color: var(--text-muted); font-weight: 500; }
+.val-delta { color: var(--delta-dn); font-weight: 800; }
+.val-tobe { color: var(--series-1); font-weight: 800; }
+
+/* ─── Legend ─── */
+.legend {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.legend-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--text-secondary); font-weight: 500;
+}
+.legend-swatch {
+  width: 12px; height: 12px; border-radius: 2px; flex-shrink: 0;
+}
+
+/* ─── Horizontal bar ─── */
+.hbar-list { display: grid; gap: 16px; }
+.hbar-item { display: grid; gap: 5px; }
+.hbar-meta {
+  display: flex; justify-content: space-between;
+  align-items: baseline;
+}
+.hbar-name { font-size: 13px; font-weight: 700; color: var(--text-primary); }
+.hbar-nums { font-size: 12px; font-weight: 600; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+.hbar-track {
+  height: 20px; background: var(--gridline);
+  border-radius: 4px; position: relative; overflow: hidden;
+}
+.hbar-fill-tobe {
+  position: absolute; left: 0; top: 0; height: 100%;
+  background: var(--baseline); border-radius: 4px 0 0 4px;
+}
+.hbar-fill-cut {
+  position: absolute; top: 0; height: 100%;
+  background: var(--delta-dn); opacity: 0.75;
+}
+.hbar-gap {
+  position: absolute; top: 0; width: 2px; height: 100%;
+  background: var(--surface-1);
+}
+.hbar-cut-label {
+  font-size: 11px; font-weight: 800; color: var(--delta-dn);
+  text-align: right; margin-top: 2px;
+}
+
+/* ─── Column chart ─── */
+.vcol-wrap {
+  position: relative; height: 200px;
+  display: flex; align-items: flex-end;
+  gap: 10px; padding-bottom: 44px; padding-left: 36px;
+}
+.vcol-baseline {
+  position: absolute; left: 36px; right: 0; bottom: 44px;
+  height: 1px; background: var(--baseline);
+}
+.vcol-gridlines {
+  position: absolute; left: 36px; right: 0;
+  top: 0; bottom: 44px; pointer-events: none;
+}
+.vcol-gl {
+  position: absolute; left: 0; right: 0; height: 1px;
+  background: var(--gridline);
+}
+.vcol-ytick {
+  position: absolute; left: -36px;
+  font-size: 10px; color: var(--text-muted);
+  transform: translateY(50%);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  width: 32px; text-align: right;
+}
+.vcol-group {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-end;
+  gap: 4px; height: 100%; padding-bottom: 44px; position: relative;
+}
+.vcol-val {
+  font-size: 11px; font-weight: 700;
+  color: var(--text-secondary); font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.vcol-bar {
+  width: 100%; max-width: 56px;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer; transition: opacity 0.15s;
+}
+.vcol-bar:hover { opacity: 0.78; }
+.vcol-xlabel {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  text-align: center; font-size: 10px; color: var(--text-muted);
+  font-weight: 500; height: 42px;
+  display: flex; align-items: flex-end;
+  justify-content: center; padding-bottom: 4px;
+  line-height: 1.35;
+}
+
+/* ─── AI task grid ─── */
+.ai-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.ai-cat {
+  border: 1px solid var(--border);
+  border-radius: 12px; padding: 18px 18px 14px;
+  background: var(--surface-page);
+}
+.ai-cat-tag {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 4px 12px; border-radius: 100px;
+  font-size: 11px; font-weight: 800; letter-spacing: 0.06em;
+  margin-bottom: 12px; color: #fff;
+}
+.ai-cat-tag .tag-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.55);
+}
+.ai-tasks { display: grid; gap: 7px; }
+.ai-task {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 9px 11px;
+  background: var(--surface-1);
+  border-radius: 8px;
+  border: 1px solid var(--gridline);
+  transition: border-color 0.15s, box-shadow 0.15s;
+  cursor: default;
+}
+.ai-task:hover {
+  border-color: var(--series-1);
+  box-shadow: 0 2px 8px rgba(42,120,214,0.12);
+}
+.task-num {
+  font-size: 15px; font-weight: 900; color: var(--series-1);
+  min-width: 24px; line-height: 1.3; flex-shrink: 0;
+}
+.task-info { display: grid; gap: 2px; }
+.task-title {
+  font-size: 13px; font-weight: 700;
+  color: var(--text-primary); line-height: 1.4;
+}
+.task-scope {
+  font-size: 11px; color: var(--text-muted); font-weight: 500;
+}
+
+/* ─── Before/After scene cards ─── */
+.scene-section { display: grid; gap: 22px; }
+.scene-row {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr;
+  align-items: center;
+  gap: 0;
+}
+.scene-card {
+  border-radius: 12px;
+  padding: 20px 20px 18px;
+  border: 1px solid var(--border);
+}
+.scene-card.asis {
+  background: var(--surface-page);
+  border-color: var(--baseline);
+}
+.scene-card.tobe {
+  background: linear-gradient(135deg, #eef5ff 0%, #f0fbf5 100%);
+  border-color: var(--series-1);
+}
+[data-theme="dark"] .scene-card.tobe {
+  background: linear-gradient(135deg, #1a2a40 0%, #182b24 100%);
+}
+.scene-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 10px; border-radius: 100px;
+  font-size: 10px; font-weight: 800; letter-spacing: 0.1em;
+  text-transform: uppercase; margin-bottom: 12px;
+}
+.scene-badge.asis-badge { background: var(--gridline); color: var(--text-muted); }
+.scene-badge.tobe-badge { background: var(--series-1); color: #fff; }
+.scene-org {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
+  color: var(--text-muted); text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.scene-title {
+  font-size: 15px; font-weight: 800; color: var(--text-primary);
+  line-height: 1.35; margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.scene-title.highlight { color: var(--series-1); }
+.scene-steps { display: grid; gap: 7px; }
+.scene-step {
+  display: flex; gap: 9px; align-items: flex-start;
+  font-size: 13px; color: var(--text-secondary); line-height: 1.5;
+}
+.scene-step .step-icon {
+  flex-shrink: 0; width: 20px; height: 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; margin-top: 1px;
+}
+.scene-step.pain .step-icon { color: var(--delta-dn); }
+.scene-step.gain .step-icon { color: var(--series-3); }
+.scene-step strong { color: var(--text-primary); font-weight: 700; }
+.scene-arrow {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; color: var(--series-1);
+  flex-shrink: 0;
+}
+.scene-visual {
+  margin-top: 14px; border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--gridline);
+  background: var(--surface-1);
+  display: flex; align-items: center; justify-content: center;
+  min-height: 80px;
+}
+.scene-divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: 4px 0;
+}
+.scene-divider::before, .scene-divider::after {
+  content: ""; flex: 1; height: 1px; background: var(--gridline);
+}
+.scene-divider-text {
+  font-size: 11px; font-weight: 700; color: var(--text-muted);
+  letter-spacing: 0.06em; white-space: nowrap;
+}
+
+/* ─── Talent panel ─── */
+.talent-panel { display: grid; gap: 14px; }
+.talent-stat {
+  padding: 18px 20px;
+  background: var(--surface-page);
+  border-radius: 10px;
+  border: 1px solid var(--gridline);
+}
+.talent-org {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
+  color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px;
+}
+.talent-num {
+  font-size: 42px; font-weight: 900;
+  letter-spacing: -0.03em; line-height: 1;
+}
+.talent-num .unit { font-size: 18px; font-weight: 500; color: var(--text-muted); margin-left: 3px; }
+.talent-meter {
+  margin-top: 12px; background: var(--seq-100);
+  border-radius: 4px; height: 7px; overflow: hidden;
+}
+.talent-meter-fill {
+  height: 100%; background: var(--series-1); border-radius: 4px;
+}
+.talent-caption { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+/* ─── Action card ─── */
+.action-card {
+  padding: 15px 16px;
+  background: var(--surface-page);
+  border-radius: 8px;
+  border-left: 3px solid var(--series-1);
+}
+.action-title {
+  font-size: 12px; font-weight: 800; color: var(--series-1); margin-bottom: 6px;
+}
+.action-body {
+  font-size: 13px; color: var(--text-secondary); line-height: 1.7;
+}
+.action-body strong { color: var(--text-primary); }
+
+/* ─── Summary total bar ─── */
+.total-bar {
+  display: flex; justify-content: space-between;
+  align-items: center;
+  margin-top: 20px; padding-top: 16px;
+  border-top: 1px solid var(--gridline);
+}
+.total-label { font-size: 13px; font-weight: 700; color: var(--text-muted); }
+.total-value { font-size: 24px; font-weight: 900; color: var(--delta-dn); letter-spacing: -0.025em; }
+.total-detail { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+/* ─── Table ─── */
+.table-toggle-btn {
+  background: none; border: 1px solid var(--gridline);
+  border-radius: 6px; padding: 4px 10px;
+  font-size: 11px; font-weight: 600; color: var(--text-muted);
+  cursor: pointer; transition: color 0.15s, border-color 0.15s;
+  float: right; margin-top: -2px;
+}
+.table-toggle-btn:hover { color: var(--series-1); border-color: var(--series-1); }
+.tbl-wrap { margin-top: 16px; display: none; }
+.tbl-wrap.open { display: block; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th {
+  text-align: left; padding: 8px 12px;
+  background: var(--surface-page); color: var(--text-muted);
+  font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
+  text-transform: uppercase; border-bottom: 1px solid var(--gridline);
+}
+.data-table td {
+  padding: 9px 12px; border-bottom: 1px solid var(--gridline);
+  color: var(--text-secondary); font-variant-numeric: tabular-nums;
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table td.num { text-align: right; font-weight: 600; color: var(--text-primary); }
+.data-table td.neg { color: var(--delta-dn); font-weight: 800; text-align: right; }
+.data-table td.bold { font-weight: 800; color: var(--text-primary); }
+
+/* ─── Tooltip ─── */
+.tooltip {
+  position: fixed; pointer-events: none; z-index: 200;
+  background: var(--text-primary); color: var(--surface-1);
+  padding: 8px 12px; border-radius: 8px;
+  font-size: 12px; font-weight: 500; line-height: 1.55;
+  opacity: 0; transition: opacity 0.1s;
+  max-width: 220px; white-space: pre-wrap;
+}
+.tooltip.show { opacity: 1; }
+
+/* ─── Responsive ─── */
+@media (max-width: 960px) {
+  .kpi-row { grid-template-columns: repeat(3, 1fr); }
+  .two-col, .three-col { grid-template-columns: 1fr; }
+  .ai-grid { grid-template-columns: 1fr; }
+  .insight-box { grid-template-columns: 1fr; gap: 16px; }
+  .insight-item { padding: 16px 0; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .insight-item:last-child { border-bottom: none; }
+  .scene-row { grid-template-columns: 1fr; }
+  .scene-arrow { transform: rotate(90deg); justify-self: center; }
+}
+@media (max-width: 560px) {
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  .dash-header { padding: 24px 20px 22px; }
+  .dash-body { padding: 16px 14px 40px; gap: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header class="dash-header">
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="eyebrow">기초소재사업본부 · PI·AX 추진 보고 · 2025</div>
+      <h1 class="main-headline">
+        경험이 <em>시스템</em>으로 쌓이고,<br>
+        AI가 <em>일하는 방식</em>을 바꾼다
+      </h1>
+      <p class="sub-headline">
+        <strong>PI 4개 과제</strong>로 조직 경험을 시스템화하고, 일 평균 <strong>19.4시간</strong>을 절감합니다.
+        AI는 사람을 대체하는 도구가 아니라, <strong>사람의 수준을 증폭하는 도구</strong>입니다.
+        자체 발굴한 <strong>11개 과제</strong>를 확대하고, AI 활용전문가 <strong>23명</strong>을 시작으로 전문인력을 적극 양성하겠습니다.
+      </p>
+    </div>
+    <div class="header-right">
+      <div class="report-date">2025년 임원회의 보고</div>
+      <button class="theme-toggle" onclick="toggleTheme()">🌙 다크 모드</button>
+    </div>
+  </div>
+</header>
+
+<div class="dash-body">
+
+  <!-- ─── INSIGHT STRIP ─── -->
+  <div class="insight-box">
+    <div class="insight-item">
+      <div class="insight-tag">핵심 메시지 1</div>
+      <div class="insight-headline">숙련자의 경험이 사라지기 전에<br>시스템으로 고정한다</div>
+      <div class="insight-body">
+        노재정비·플랜트·내화물·라임화성 4개 영역에 걸쳐 <strong>49.6억 규모</strong>의 PI 시스템을 구축.
+        암묵지(暗默知)를 데이터와 프로세스로 전환합니다.
+      </div>
+    </div>
+    <div class="insight-item">
+      <div class="insight-tag">핵심 메시지 2</div>
+      <div class="insight-headline">AI가 반복 업무를 대신해<br>하루 19.4시간을 돌려준다</div>
+      <div class="insight-body">
+        일평균 50.7시간 → 31.2시간으로 <strong>38.2% 감축</strong>.
+        절감된 시간은 전략·고객·혁신 과제에 재투입됩니다.
+      </div>
+    </div>
+    <div class="insight-item">
+      <div class="insight-tag">핵심 메시지 3</div>
+      <div class="insight-headline">AI 전문가 23명을 기반으로<br>일하는 방식을 근본적으로 바꾼다</div>
+      <div class="insight-body">
+        전사 AI 전문가 87명 중 <strong>본부 23명(26.4%)</strong> 확보.
+        교육 이후 소속 실의 PI/AX 과제에 즉시 연결됩니다.
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── KPI ROW ─── -->
+  <div class="kpi-row" role="region" aria-label="핵심 수치">
+    <div class="kpi-tile" style="--kpi-accent: var(--series-1)">
+      <div class="kpi-label">PI 실행과제</div>
+      <div class="kpi-value">4<span class="unit">개</span></div>
+      <div class="kpi-sub">시스템 투자 과제</div>
+    </div>
+    <div class="kpi-tile" style="--kpi-accent: var(--series-2)">
+      <div class="kpi-label">AI TOP 과제</div>
+      <div class="kpi-value">11<span class="unit">개</span></div>
+      <div class="kpi-sub">자체 발굴</div>
+    </div>
+    <div class="kpi-tile" style="--kpi-accent: var(--delta-dn)">
+      <div class="kpi-label">일평균 절감시간</div>
+      <div class="kpi-value" style="color:var(--delta-dn)">19.4<span class="unit">h</span></div>
+      <div class="kpi-delta">▼ 38.2%</div>
+      <div class="kpi-sub">50.7h → 31.2h</div>
+    </div>
+    <div class="kpi-tile" style="--kpi-accent: var(--series-4)">
+      <div class="kpi-label">시스템 투자규모</div>
+      <div class="kpi-value">49.6<span class="unit">억</span></div>
+      <div class="kpi-sub">PI 4개 과제 합산</div>
+    </div>
+    <div class="kpi-tile" style="--kpi-accent: var(--series-3)">
+      <div class="kpi-label">AI 전문가 (본부)</div>
+      <div class="kpi-value">23<span class="unit">명</span></div>
+      <div class="kpi-sub">전사 87명 중 26.4%</div>
+    </div>
+  </div>
+
+  <!-- ─── SECTION 01: 주요 변화 모습 (AS-IS → TO-BE) ─── -->
+  <div class="card">
+    <div class="section-strip">
+      <span class="section-num">Section 01</span>
+      <span class="section-headline">현장이 <em>어떻게 달라지는가</em> — 조직별 AS-IS · TO-BE</span>
+    </div>
+    <div class="scene-section">
+
+      <!-- 플랜트 -->
+      <div class="scene-divider"><span class="scene-divider-text">플랜트 · 플랜트공사 관리 시스템</span></div>
+      <div class="scene-row">
+        <div class="scene-card asis">
+          <div class="scene-badge asis-badge">⚠ AS-IS</div>
+          <div class="scene-org">글로벌노재사업실</div>
+          <div class="scene-title">일평균 30.0h 투입</div>
+          <div class="scene-steps">
+            <div class="scene-step pain">
+              <span class="step-icon">✕</span>
+              <span>플랜트공사 관리 업무에 일평균 <strong>30.0시간</strong> 소요</span>
+            </div>
+          </div>
+          <div class="scene-visual" style="padding:14px 16px;">
+            <svg viewBox="0 0 260 80" width="100%" style="max-height:80px" aria-hidden="true">
+              <!-- clock face -->
+              <circle cx="60" cy="40" r="28" fill="#f0ede4" stroke="#c3c2b7" stroke-width="1.5"/>
+              <circle cx="60" cy="40" r="2" fill="#898781"/>
+              <line x1="60" y1="40" x2="60" y2="18" stroke="#898781" stroke-width="2" stroke-linecap="round"/>
+              <line x1="60" y1="40" x2="80" y2="48" stroke="#d03b3b" stroke-width="2" stroke-linecap="round"/>
+              <text x="60" y="74" text-anchor="middle" font-size="9" fill="#d03b3b" font-weight="bold" font-family="sans-serif">30.0h / 일</text>
+              <!-- person piling papers -->
+              <rect x="115" y="30" width="32" height="22" rx="2" fill="#e2e0d5" stroke="#c3c2b7" stroke-width="1"/>
+              <rect x="120" y="24" width="32" height="22" rx="2" fill="#e9e7de" stroke="#c3c2b7" stroke-width="1"/>
+              <rect x="125" y="18" width="32" height="22" rx="2" fill="#f0ede4" stroke="#c3c2b7" stroke-width="1"/>
+              <text x="141" y="31" text-anchor="middle" font-size="7" fill="#898781" font-family="sans-serif">공사서류</text>
+              <text x="141" y="57" text-anchor="middle" font-size="8" fill="#d03b3b" font-family="sans-serif">서류 적체</text>
+              <!-- arrow showing burden -->
+              <line x1="165" y1="40" x2="195" y2="40" stroke="#d03b3b" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <polygon points="192,36 196,40 192,44" fill="#d03b3b"/>
+              <!-- stressed icon -->
+              <circle cx="220" cy="34" r="14" fill="#fde8d0" stroke="#eb6834" stroke-width="1.2"/>
+              <text x="220" y="38" text-anchor="middle" font-size="13" font-family="sans-serif">😓</text>
+              <text x="220" y="56" text-anchor="middle" font-size="8" fill="#d03b3b" font-family="sans-serif">업무 과부하</text>
+            </svg>
+          </div>
+        </div>
+        <div class="scene-arrow">→</div>
+        <div class="scene-card tobe">
+          <div class="scene-badge tobe-badge">✓ TO-BE</div>
+          <div class="scene-org">글로벌노재사업실</div>
+          <div class="scene-title highlight">플랜트공사 관리 시스템 구축 후 18.1h</div>
+          <div class="scene-steps">
+            <div class="scene-step gain">
+              <span class="step-icon">✓</span>
+              <span>시스템 구축으로 일평균 <strong>18.1시간</strong>으로 감축 (▼11.9h)</span>
+            </div>
+          </div>
+          <div class="scene-visual" style="padding:14px 16px;">
+            <svg viewBox="0 0 260 80" width="100%" style="max-height:80px" aria-hidden="true">
+              <!-- before bar -->
+              <text x="8" y="22" font-size="9" fill="#898781" font-family="sans-serif">AS-IS</text>
+              <rect x="8" y="28" width="156" height="16" rx="4" fill="#c3c2b7"/>
+              <text x="170" y="40" font-size="9" fill="#898781" font-weight="bold" font-family="sans-serif">30.0h</text>
+              <!-- after bar -->
+              <text x="8" y="58" font-size="9" fill="#2a78d6" font-family="sans-serif">TO-BE</text>
+              <rect x="8" y="64" width="94" height="16" rx="4" fill="#2a78d6"/>
+              <text x="108" y="76" font-size="9" fill="#2a78d6" font-weight="bold" font-family="sans-serif">18.1h</text>
+              <!-- delta label -->
+              <rect x="210" y="32" width="44" height="22" rx="5" fill="#fde8d0" stroke="#eb6834" stroke-width="1"/>
+              <text x="232" y="44" text-anchor="middle" font-size="9" fill="#d03b3b" font-weight="bold" font-family="sans-serif">▼ 11.9h</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 내화물 -->
+      <div class="scene-divider"><span class="scene-divider-text">내화물 · 내화물 조업 시스템 고도화</span></div>
+      <div class="scene-row">
+        <div class="scene-card asis">
+          <div class="scene-badge asis-badge">⚠ AS-IS</div>
+          <div class="scene-org">내화물사업실</div>
+          <div class="scene-title">일평균 12.8h 투입</div>
+          <div class="scene-steps">
+            <div class="scene-step pain">
+              <span class="step-icon">✕</span>
+              <span>내화물 조업 관련 업무에 일평균 <strong>12.8시간</strong> 소요</span>
+            </div>
+          </div>
+          <div class="scene-visual" style="padding:14px 16px;">
+            <svg viewBox="0 0 260 80" width="100%" style="max-height:80px" aria-hidden="true">
+              <circle cx="60" cy="40" r="28" fill="#f0ede4" stroke="#c3c2b7" stroke-width="1.5"/>
+              <circle cx="60" cy="40" r="2" fill="#898781"/>
+              <line x1="60" y1="40" x2="60" y2="18" stroke="#898781" stroke-width="2" stroke-linecap="round"/>
+              <line x1="60" y1="40" x2="76" y2="30" stroke="#d03b3b" stroke-width="2" stroke-linecap="round"/>
+              <text x="60" y="74" text-anchor="middle" font-size="9" fill="#d03b3b" font-weight="bold" font-family="sans-serif">12.8h / 일</text>
+              <!-- furnace icon -->
+              <rect x="115" y="18" width="50" height="44" rx="5" fill="#fde8d0" stroke="#eb6834" stroke-width="1.2"/>
+              <rect x="125" y="26" width="30" height="28" rx="3" fill="#fbd0a8" stroke="#eb6834" stroke-width="1" opacity="0.8"/>
+              <text x="140" y="46" text-anchor="middle" font-size="12" font-family="sans-serif">🔥</text>
+              <text x="140" y="70" text-anchor="middle" font-size="7.5" fill="#898781" font-family="sans-serif">소성로 조업</text>
+              <!-- manual note -->
+              <rect x="182" y="24" width="42" height="36" rx="3" fill="#f5f3ee" stroke="#c3c2b7" stroke-width="1"/>
+              <line x1="190" y1="34" x2="216" y2="34" stroke="#c3c2b7" stroke-width="1"/>
+              <line x1="190" y1="40" x2="216" y2="40" stroke="#c3c2b7" stroke-width="1"/>
+              <line x1="190" y1="46" x2="208" y2="46" stroke="#c3c2b7" stroke-width="1"/>
+              <text x="203" y="68" text-anchor="middle" font-size="7" fill="#d03b3b" font-family="sans-serif">수작업 집계</text>
+            </svg>
+          </div>
+        </div>
+        <div class="scene-arrow">→</div>
+        <div class="scene-card tobe">
+          <div class="scene-badge tobe-badge">✓ TO-BE</div>
+          <div class="scene-org">내화물사업실</div>
+          <div class="scene-title highlight">조업 시스템 고도화 후 9.0h</div>
+          <div class="scene-steps">
+            <div class="scene-step gain">
+              <span class="step-icon">✓</span>
+              <span>시스템 고도화로 일평균 <strong>9.0시간</strong>으로 감축 (▼3.8h)</span>
+            </div>
+          </div>
+          <div class="scene-visual" style="padding:14px 16px;">
+            <svg viewBox="0 0 260 80" width="100%" style="max-height:80px" aria-hidden="true">
+              <text x="8" y="22" font-size="9" fill="#898781" font-family="sans-serif">AS-IS</text>
+              <rect x="8" y="28" width="130" height="16" rx="4" fill="#c3c2b7"/>
+              <text x="144" y="40" font-size="9" fill="#898781" font-weight="bold" font-family="sans-serif">12.8h</text>
+              <text x="8" y="58" font-size="9" fill="#2a78d6" font-family="sans-serif">TO-BE</text>
+              <rect x="8" y="64" width="91" height="16" rx="4" fill="#2a78d6"/>
+              <text x="105" y="76" font-size="9" fill="#2a78d6" font-weight="bold" font-family="sans-serif">9.0h</text>
+              <rect x="210" y="32" width="44" height="22" rx="5" fill="#fde8d0" stroke="#eb6834" stroke-width="1"/>
+              <text x="232" y="44" text-anchor="middle" font-size="9" fill="#d03b3b" font-weight="bold" font-family="sans-serif">▼ 3.8h</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 노재정비 -->
+      <div class="scene-divider"><span class="scene-divider-text">노재정비 · 노재정비 업무 시스템 구축</span></div>
+      <div class="scene-row">
+        <div class="scene-card asis">
+          <div class="scene-badge asis-badge">⚠ AS-IS</div>
+          <div class="scene-org">노재정비사업실</div>
+          <div class="scene-title">일평균 7.9h 투입</div>
+          <div class="scene-steps">
+            <div class="scene-step pain">
+              <span class="step-icon">✕</span>
+              <span>노재정비 업무에 일평균 <strong>7.9시간</strong> 소요</span>
+            </div>
+          </div>
+          <div class="scene-visual" style="padding:14px 16px;">
+            <svg viewBox="0 0 260 80" width="100%" style="max-height:80px" aria-hidden="true">
+              <circle cx="60" cy="40" r="28" fill="#f0ede4" stroke="#c3c2b7" stroke-width="1.5"/>
+              <circle cx="60" cy="40" r="2" fill="#898781"/>
+              <line x1="60" y1="40" x2="60" y2="18" stroke="#898781" stroke-width="2" stroke-linecap="round"/>
+              <line x1="60" y1="40" x2="73" y2="26" stroke="#d03b3b" stroke-width="2" stroke-linecap="round"/>
+              <text x="60" y="74" text-anchor="middle" font-size="9" fill="#d03b3b" font-weight="bold" font-family="sans-serif">7.9h / 일</text>
+              <!-- furnace + scattered docs -->
+              <rect x="110" y="22" width="44" height="38" rx="5" fill="#f0ede4" stroke="#c3c2b7" stroke-width="1.2"/>
+              <text x="132" y="46" text-anchor="middle" font-size="13" font-family="sans-serif">🏭</text>
+              <text x="132" y="68" text-anchor="middle" font-size="7" fill="#898781" font-family="sans-serif">로(爐) 정비</text>
+              <rect x="165" y="18" width="32" height="22" rx="2" fill="#e2e0d5" stroke="#c3c2b7" stroke-width="1" transform="rotate(-6,181,29)"/>
+              <text x="181" y="31" text-anchor="middle" font-size="6.5" fill="#898781" font-family="sans-serif">이력서류</text>
+              <rect x="202" y="26" width="32" height="22" rx="2" fill="#e9e7de" stroke="#c3c2b7" stroke-width="1" transform="rotate(5,218,37)"/>
+              <text x="218" y="39" text-anchor="middle" font-size="6.5" fill="#898781" font-family="sans-serif">수첩메모</text>
+            </svg>
+          </div>
+        </div>
+        <div class="scene-arrow">→</div>
+        <div class="scene-card tobe">
+          <div class="scene-badge tobe-badge">✓ TO-BE</div>
+          <div class="scene-org">노재정비사업실</div>
+          <div class="scene-title highlight">업무 시스템 구축 후 4.2h</div>
+          <div class="scene-steps">
+            <div class="scene-step gain">
+              <span class="step-icon">✓</span>
+              <span>시스템 구축으로 일평균 <strong>4.2시간</strong>으로 감축 (▼3.7h)</span>
+            </div>
+          </div>
+          <div class="scene-visual" style="padding:14px 16px;">
+            <svg viewBox="0 0 260 80" width="100%" style="max-height:80px" aria-hidden="true">
+              <text x="8" y="22" font-size="9" fill="#898781" font-family="sans-serif">AS-IS</text>
+              <rect x="8" y="28" width="80" height="16" rx="4" fill="#c3c2b7"/>
+              <text x="94" y="40" font-size="9" fill="#898781" font-weight="bold" font-family="sans-serif">7.9h</text>
+              <text x="8" y="58" font-size="9" fill="#2a78d6" font-family="sans-serif">TO-BE</text>
+              <rect x="8" y="64" width="43" height="16" rx="4" fill="#2a78d6"/>
+              <text x="57" y="76" font-size="9" fill="#2a78d6" font-weight="bold" font-family="sans-serif">4.2h</text>
+              <rect x="210" y="32" width="44" height="22" rx="5" fill="#fde8d0" stroke="#eb6834" stroke-width="1"/>
+              <text x="232" y="44" text-anchor="middle" font-size="9" fill="#d03b3b" font-weight="bold" font-family="sans-serif">▼ 3.7h</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── SECTION 02: 일하는 모습 변화 ─── -->
+  <div class="card">
+    <div class="section-strip">
+      <span class="section-num">Section 02</span>
+      <span class="section-headline">일하는 모습이 <em>어떻게 바뀌는가</em> — PI 과제별 변화</span>
+    </div>
+    <div class="three-col" style="gap:16px;">
+
+      <!-- 플랜트 -->
+      <div style="border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+        <div style="background:var(--series-1); padding:14px 16px;">
+          <div style="font-size:10px; font-weight:800; letter-spacing:0.08em; color:rgba(255,255,255,0.7); margin-bottom:4px; text-transform:uppercase;">글로벌노재사업실 · 플랜트</div>
+          <div style="font-size:14px; font-weight:800; color:#fff; line-height:1.35;">플랜트공사 관리 시스템 구축<br><span style="font-size:12px; font-weight:600; opacity:0.85;">투자 131.5억원 (1,314,832천원)</span></div>
+        </div>
+        <div style="padding:16px; display:grid; gap:10px;">
+          <div style="display:flex; gap:10px; align-items:flex-start;">
+            <div style="background:var(--seq-100); border-radius:6px; padding:5px 8px; font-size:11px; font-weight:800; color:var(--series-1); white-space:nowrap; min-width:52px; text-align:center;">AS-IS</div>
+            <div style="font-size:13px; color:var(--text-secondary); line-height:1.6;">일평균 <strong style="color:var(--text-primary);">30.0시간</strong> 투입</div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start;">
+            <div style="background:#d6eaff; border-radius:6px; padding:5px 8px; font-size:11px; font-weight:800; color:var(--series-1); white-space:nowrap; min-width:52px; text-align:center;">TO-BE</div>
+            <div style="font-size:13px; color:var(--text-secondary); line-height:1.6;">일평균 <strong style="color:var(--series-1);">18.1시간</strong>으로 감축</div>
+          </div>
+          <div style="padding:10px 12px; background:var(--surface-page); border-radius:8px; border-left:3px solid var(--delta-dn); margin-top:2px;">
+            <div style="font-size:18px; font-weight:900; color:var(--delta-dn);">▼ 11.9h / 일</div>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:2px;">일평균 감축 시간</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 내화물 -->
+      <div style="border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+        <div style="background:var(--series-3); padding:14px 16px;">
+          <div style="font-size:10px; font-weight:800; letter-spacing:0.08em; color:rgba(255,255,255,0.7); margin-bottom:4px; text-transform:uppercase;">내화물사업실 · 내화물</div>
+          <div style="font-size:14px; font-weight:800; color:#fff; line-height:1.35;">내화물 조업 시스템 고도화<br><span style="font-size:12px; font-weight:600; opacity:0.85;">투자 202.7억원 (2,026,697천원)</span></div>
+        </div>
+        <div style="padding:16px; display:grid; gap:10px;">
+          <div style="display:flex; gap:10px; align-items:flex-start;">
+            <div style="background:#d5f5e8; border-radius:6px; padding:5px 8px; font-size:11px; font-weight:800; color:var(--series-3); white-space:nowrap; min-width:52px; text-align:center;">AS-IS</div>
+            <div style="font-size:13px; color:var(--text-secondary); line-height:1.6;">일평균 <strong style="color:var(--text-primary);">12.8시간</strong> 투입</div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start;">
+            <div style="background:#d5f5e8; border-radius:6px; padding:5px 8px; font-size:11px; font-weight:800; color:var(--series-3); white-space:nowrap; min-width:52px; text-align:center;">TO-BE</div>
+            <div style="font-size:13px; color:var(--text-secondary); line-height:1.6;">일평균 <strong style="color:var(--series-3);">9.0시간</strong>으로 감축</div>
+          </div>
+          <div style="padding:10px 12px; background:var(--surface-page); border-radius:8px; border-left:3px solid var(--delta-dn); margin-top:2px;">
+            <div style="font-size:18px; font-weight:900; color:var(--delta-dn);">▼ 3.8h / 일</div>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:2px;">일평균 감축 시간</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 노재정비 -->
+      <div style="border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+        <div style="background:var(--series-2); padding:14px 16px;">
+          <div style="font-size:10px; font-weight:800; letter-spacing:0.08em; color:rgba(255,255,255,0.7); margin-bottom:4px; text-transform:uppercase;">노재정비사업실 · 노재정비</div>
+          <div style="font-size:14px; font-weight:800; color:#fff; line-height:1.35;">노재정비 업무 시스템 구축<br><span style="font-size:12px; font-weight:600; opacity:0.85;">투자 102.9억원 (1,029,006천원)</span></div>
+        </div>
+        <div style="padding:16px; display:grid; gap:10px;">
+          <div style="display:flex; gap:10px; align-items:flex-start;">
+            <div style="background:#fde8d8; border-radius:6px; padding:5px 8px; font-size:11px; font-weight:800; color:var(--series-2); white-space:nowrap; min-width:52px; text-align:center;">AS-IS</div>
+            <div style="font-size:13px; color:var(--text-secondary); line-height:1.6;">일평균 <strong style="color:var(--text-primary);">7.9시간</strong> 투입</div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start;">
+            <div style="background:#fde8d8; border-radius:6px; padding:5px 8px; font-size:11px; font-weight:800; color:var(--series-2); white-space:nowrap; min-width:52px; text-align:center;">TO-BE</div>
+            <div style="font-size:13px; color:var(--text-secondary); line-height:1.6;">일평균 <strong style="color:var(--series-2);">4.2시간</strong>으로 감축</div>
+          </div>
+          <div style="padding:10px 12px; background:var(--surface-page); border-radius:8px; border-left:3px solid var(--delta-dn); margin-top:2px;">
+            <div style="font-size:18px; font-weight:900; color:var(--delta-dn);">▼ 3.7h / 일</div>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:2px;">일평균 감축 시간</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── SECTION 03: 시간 절감 + PI 투자 ─── -->
+  <div class="two-col">
+
+    <!-- 시간 절감 (dumbbell) -->
+    <div class="card">
+      <div class="section-strip">
+        <span class="section-num">Section 03</span>
+        <span class="section-headline">PI 과제를 통해 <em>38%</em>의 시간을 되찾아 준다</span>
+        <button class="table-toggle-btn" onclick="toggleTable('tbl-time')">표 보기</button>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-swatch" style="background:var(--baseline)"></div>
+          <span>AS-IS</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-swatch" style="background:var(--series-1)"></div>
+          <span>TO-BE</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-swatch" style="background:var(--seq-100)"></div>
+          <span>감축 구간</span>
+        </div>
+      </div>
+
+      <div class="dumbbell-chart" id="dumbbell-time" role="img" aria-label="조직별 시간 감축 비교"></div>
+
+      <div class="total-bar">
+        <div>
+          <div class="total-label">3개 조직 합산</div>
+          <div class="total-detail">50.7h → 31.2h / 일평균</div>
+        </div>
+        <div style="text-align:right">
+          <div class="total-value">▼ 19.4h</div>
+          <div class="total-detail" style="text-align:right">38.2% 감축</div>
+        </div>
+      </div>
+
+      <div class="tbl-wrap" id="tbl-time">
+        <table class="data-table">
+          <thead><tr><th>조직</th><th class="num">AS-IS (h)</th><th class="num">TO-BE (h)</th><th class="neg">감축 (h)</th></tr></thead>
+          <tbody>
+            <tr><td>노재정비</td><td class="num">7.9</td><td class="num">4.2</td><td class="neg">▼ 3.7</td></tr>
+            <tr><td>플랜트</td><td class="num">30.0</td><td class="num">18.1</td><td class="neg">▼ 11.9</td></tr>
+            <tr><td>내화물</td><td class="num">12.8</td><td class="num">9.0</td><td class="neg">▼ 3.8</td></tr>
+            <tr><td class="bold">합계</td><td class="num bold">50.7</td><td class="num bold">31.2</td><td class="neg">▼ 19.4</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PI 투자 (column chart) -->
+    <div class="card">
+      <div class="section-strip">
+        <span class="section-num">Section 04</span>
+        <span class="section-headline">49.6억으로 <em>4개 핵심 시스템</em>을 구축한다</span>
+        <button class="table-toggle-btn" onclick="toggleTable('tbl-budget')">표 보기</button>
+      </div>
+
+      <div id="vcol-budget"></div>
+
+      <div class="tbl-wrap" id="tbl-budget">
+        <table class="data-table">
+          <thead><tr><th>과제명</th><th>담당</th><th class="num">투자액 (천원)</th></tr></thead>
+          <tbody>
+            <tr><td>라임/화성 조업정보 연계</td><td>라임화성사업실장</td><td class="num">585,051</td></tr>
+            <tr><td>노재정비 업무 시스템 구축</td><td>노재정비사업실장</td><td class="num">1,029,006</td></tr>
+            <tr><td>내화물 조업 시스템 고도화</td><td>내화물사업실장</td><td class="num">2,026,697</td></tr>
+            <tr><td>플랜트공사 관리 시스템</td><td>글로벌노재사업실장</td><td class="num">1,314,832</td></tr>
+            <tr><td class="bold">합계</td><td></td><td class="num bold">4,955,586</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ─── SECTION 3: AI TOP 11 ─── -->
+  <div class="card">
+    <div class="section-strip">
+      <span class="section-num">Section 05</span>
+      <span class="section-headline">본부 자체 발굴 <em>11개 AI 과제</em>로 사업 전방위를 혁신한다</span>
+    </div>
+
+    <div class="ai-grid">
+      <!-- 자율형 지능 공장 -->
+      <div class="ai-cat">
+        <div class="ai-cat-tag" style="background:var(--series-1)">
+          <span class="tag-dot"></span>자율형 지능 공장
+        </div>
+        <div class="ai-tasks">
+          <div class="ai-task">
+            <div class="task-num">01</div>
+            <div class="task-info">
+              <div class="task-title">AI 기반 통합 생산계획 및 수급 최적화</div>
+              <div class="task-scope">내화물 · 라임화성</div>
+            </div>
+          </div>
+          <div class="ai-task">
+            <div class="task-num">02</div>
+            <div class="task-info">
+              <div class="task-title">스마트 팩토리 및 공정 자율 제어</div>
+              <div class="task-scope">내화물</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 데이터 기반 전략 영업 -->
+      <div class="ai-cat">
+        <div class="ai-cat-tag" style="background:var(--series-2)">
+          <span class="tag-dot"></span>데이터 기반 전략 영업
+        </div>
+        <div class="ai-tasks">
+          <div class="ai-task">
+            <div class="task-num">03</div>
+            <div class="task-info">
+              <div class="task-title">AI 기반 전략영업 및 영업조직 혁신</div>
+              <div class="task-scope">플랜트 · 내화물</div>
+            </div>
+          </div>
+          <div class="ai-task">
+            <div class="task-num">04</div>
+            <div class="task-info">
+              <div class="task-title">통합 운영형 내화물 사업 모델</div>
+              <div class="task-scope">노재정비</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 무인화 및 예지 정비 -->
+      <div class="ai-cat">
+        <div class="ai-cat-tag" style="background:var(--series-3)">
+          <span class="tag-dot"></span>무인화 및 예지 정비
+        </div>
+        <div class="ai-tasks">
+          <div class="ai-task">
+            <div class="task-num">05</div>
+            <div class="task-info">
+              <div class="task-title">Plant 가상 시공 시뮬레이션 및 AI 안전 검증</div>
+              <div class="task-scope">플랜트</div>
+            </div>
+          </div>
+          <div class="ai-task">
+            <div class="task-num">06</div>
+            <div class="task-info">
+              <div class="task-title">휴머노이드·자율로봇 기반 정비 무인화</div>
+              <div class="task-scope">노재정비</div>
+            </div>
+          </div>
+          <div class="ai-task">
+            <div class="task-num">07</div>
+            <div class="task-info">
+              <div class="task-title">고객사 협업형 로(爐) 미래 수명 예측</div>
+              <div class="task-scope">노재정비</div>
+            </div>
+          </div>
+          <div class="ai-task">
+            <div class="task-num">08</div>
+            <div class="task-info">
+              <div class="task-title">AI 기반 설비 예지정비 및 현장 지능화</div>
+              <div class="task-scope">라임화성</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 지능형 경영관리 -->
+      <div class="ai-cat">
+        <div class="ai-cat-tag" style="background:var(--series-5)">
+          <span class="tag-dot"></span>지능형 경영관리
+        </div>
+        <div class="ai-tasks">
+          <div class="ai-task">
+            <div class="task-num">09</div>
+            <div class="task-info">
+              <div class="task-title">본부 손익전망 및 실적분석 자동화 시스템</div>
+              <div class="task-scope">공통</div>
+            </div>
+          </div>
+          <div class="ai-task">
+            <div class="task-num">10</div>
+            <div class="task-info">
+              <div class="task-title">지능형 재무 프로세스 자동화 및 실적 분석</div>
+              <div class="task-scope">플랜트</div>
+            </div>
+          </div>
+          <div class="ai-task">
+            <div class="task-num">11</div>
+            <div class="task-info">
+              <div class="task-title">통합 대시보드 운영 및 의사결정 지능화</div>
+              <div class="task-scope">라임화성</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── 구 섹션 04/05: Section 01/02로 이동 완료 ─── -->
+  <!-- OLD_REMOVED_START
+
+      <!-- ── 플랜트 ── -->
+      <div class="scene-divider"><span class="scene-divider-text">플랜트 · 공사관리 시스템</span></div>
+      <div class="scene-row">
+        <div class="scene-card asis">
+          <div class="scene-badge asis-badge">⚠ AS-IS · 지금</div>
+          <div class="scene-org">플랜트사업실</div>
+          <div class="scene-title">엑셀·전화로 공정을 맞추는 담당자</div>
+          <div class="scene-steps">
+            <div class="scene-step pain">
+              <span class="step-icon">✕</span>
+              <span>공사 일정·인력·자재를 <strong>엑셀 수십 개</strong>로 따로 관리, 버전 충돌 잦음</span>
+            </div>
+            <div class="scene-step pain">
+              <span class="step-icon">✕</span>
+              <span>현장 변경사항을 <strong>유선·카톡</strong>으로 취합 → 하루 평균 2~3h 소모</span>
+            </div>
+            <div class="scene-step pain">
+              <span class="step-icon">✕</span>
+              <span>준공 후 정산 시 <strong>계약·실적 대조</strong>를 사람이 수작업으로 진행</span>
+            </div>
+          </div>
+          <div class="scene-visual" style="padding:12px 14px;">
+            <svg viewBox="0 0 260 72" width="100%" style="max-height:72px" aria-hidden="true">
+              <!-- Excel stacks -->
+              <rect x="8"  y="12" width="36" height="26" rx="3" fill="#e2e0d5" stroke="#c3c2b7" stroke-width="1"/>
+              <text x="26" y="29" text-anchor="middle" font-size="8" fill="#898781" font-family="sans-serif">엑셀A</text>
+              <rect x="50" y="18" width="36" height="26" rx="3" fill="#e2e0d5" stroke="#c3c2b7" stroke-width="1"/>
+              <text x="68" y="35" text-anchor="middle" font-size="8" fill="#898781" font-family="sans-serif">엑셀B</text>
+              <rect x="92" y="8"  width="36" height="26" rx="3" fill="#e2e0d5" stroke="#c3c2b7" stroke-width="1"/>
+              <text x="110" y="25" text-anchor="middle" font-size="8" fill="#898781" font-family="sans-serif">엑셀C</text>
+              <!-- arrows scattered -->
+              <line x1="44" y1="25" x2="50" y2="31" stroke="#d03b3b" stroke-width="1.2" stroke-dasharray="3 2"/>
+              <line x1="86" y1="21" x2="92" y2="21" stroke="#d03b3b" stroke-width="1.2" stroke-dasharray="3 2"/>
+              <!-- phone icon area -->
+              <rect x="148" y="10" width="48" height="52" rx="6" fill="#f0ede4" stroke="#c3c2b7" stroke-width="1"/>
+              <text x="172" y="26" text-anchor="middle" font-size="11" fill="#898781" font-family="sans-serif">📞</text>
+              <text x="172" y="41" text-anchor="middle" font-size="7.5" fill="#898781" font-family="sans-serif">전화/카톡</text>
+              <text x="172" y="53" text-anchor="middle" font-size="7" fill="#d03b3b" font-family="sans-serif">취합 2~3h</text>
+              <!-- confused person -->
+              <circle cx="228" cy="26" r="9" fill="#e2e0d5" stroke="#c3c2b7" stroke-width="1"/>
+              <text x="228" y="30" text-anchor="middle" font-size="9" fill="#898781" font-family="sans-serif">😵</text>
+              <text x="228" y="52" text-anchor="middle" font-size="7" fill="#d03b3b" font-family="sans-serif">버전충돌</text>
+              <text x="228" y="62" text-anchor="middle" font-size="7" fill="#d03b3b" font-family="sans-serif">수작업정산</text>
+            </svg>
+          </div>
+        </div>
+        <div class="scene-arrow">→</div>
+        <div class="scene-card tobe">
+          <div class="scene-badge tobe-badge">✓ TO-BE · 시스템 도입 후</div>
+          <div class="scene-org">플랜트사업실</div>
+          <div class="scene-title highlight">통합 플랫폼이 공정·인력·정산을 자동 연결</div>
+          <div class="scene-steps">
+            <div class="scene-step gain">
+              <span class="step-icon">✓</span>
+              <span>일정·자재·인력을 <strong>단일 시스템</strong>에서 실시간 조회·수정, 버전 자동 관리</span>
+            </div>
+            <div class="scene-step gain">
+              <span class="step-icon">✓</span>
+              <span>현장 변경 발생 시 <strong>모바일 앱으로 즉시 반영</strong> → 취합 시간 ▼ 80%</span>
+            </div>
+            <div class="scene-step gain">
+              <span class="step-icon">✓</span>
+              <span>계약·실적 자동 대조 리포트로 <strong>정산 소요 일수 단축</strong></span>
+            </div>
+          </div>
+          <div class="scene-visual" style="padding:12px 14px;">
+            <svg viewBox="0 0 260 72" width="100%" style="max-height:72px" aria-hidden="true">
+              <!-- central DB -->
+              <rect x="96" y="8" width="68" height="56" rx="8" fill="#d6eaff" stroke="#2a78d6" stroke-width="1.5"/>
+              <text x="130" y="28" text-anchor="middle" font-size="8" fill="#2a78d6" font-weight="bold" font-family="sans-serif">통합 플랫폼</text>
+              <text x="130" y="40" text-anchor="middle" font-size="9" fill="#2a78d6" font-family="sans-serif">⚙</text>
+              <text x="130" y="54" text-anchor="middle" font-size="7" fill="#256abf" font-family="sans-serif">실시간 연동</text>
+              <!-- nodes -->
+              <rect x="8"  y="16" width="44" height="20" rx="4" fill="#eef5ff" stroke="#9ec5f4" stroke-width="1"/>
+              <text x="30" y="30" text-anchor="middle" font-size="7.5" fill="#2a78d6" font-family="sans-serif">일정·공정</text>
+              <rect x="8"  y="44" width="44" height="20" rx="4" fill="#eef5ff" stroke="#9ec5f4" stroke-width="1"/>
+              <text x="30" y="58" text-anchor="middle" font-size="7.5" fill="#2a78d6" font-family="sans-serif">인력·자재</text>
+              <rect x="208" y="16" width="44" height="20" rx="4" fill="#eef5ff" stroke="#9ec5f4" stroke-width="1"/>
+              <text x="230" y="30" text-anchor="middle" font-size="7.5" fill="#2a78d6" font-family="sans-serif">계약·정산</text>
+              <rect x="208" y="44" width="44" height="20" rx="4" fill="#eef5ff" stroke="#9ec5f4" stroke-width="1"/>
+              <text x="230" y="58" text-anchor="middle" font-size="7.5" fill="#1baf7a" font-family="sans-serif">모바일앱</text>
+              <!-- connectors -->
+              <line x1="52" y1="26" x2="96" y2="30" stroke="#6da7ec" stroke-width="1.2"/>
+              <line x1="52" y1="54" x2="96" y2="46" stroke="#6da7ec" stroke-width="1.2"/>
+              <line x1="164" y1="30" x2="208" y2="26" stroke="#6da7ec" stroke-width="1.2"/>
+              <line x1="164" y1="46" x2="208" y2="54" stroke="#1baf7a" stroke-width="1.2"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 내화물 ── -->
+      <div class="scene-divider"><span class="scene-divider-text">내화물 · 조업 시스템 고도화</span></div>
+      <div class="scene-row">
+        <div class="scene-card asis">
+          <div class="scene-badge asis-badge">⚠ AS-IS · 지금</div>
+          <div class="scene-org">내화물사업실</div>
+          <div class="scene-title">숙련자 기억에만 남아있는 조업 노하우</div>
+          <div class="scene-steps">
+            <div class="scene-step pain">
+              <span class="step-icon">✕</span>
+              <span>소성로 온도·분위기 설정이 <strong>숙련자 개인 경험</strong>에만 의존</span>
+            </div>
+            <div class="scene-step pain">
+              <span class="step-icon">✕</span>
+              <span>생산계획-실적 비교를 위해 <strong>수작업 집계</strong> → 하루 3.8h 소모</span>
+            </div>
+            <div class="scene-step pain">
+              <span class="step-icon">✕</span>
+              <span>불량 원인 분석이 <strong>사후 수동 보고</strong> 방식, 재발 방지 느림</span>
+            </div>
+          </div>
+          <div class="scene-visual" style="padding:12px 14px;">
+            <svg viewBox="0 0 260 72" width="100%" style="max-height:72px" aria-hidden="true">
+              <!-- furnace shape -->
+              <rect x="20" y="10" width="55" height="50" rx="5" fill="#f0ede4" stroke="#c3c2b7" stroke-width="1.2"/>
+              <rect x="30" y="20" width="35" height="30" rx="3" fill="#fde8d0" stroke="#eb6834" stroke-width="1" opacity="0.7"/>
+              <text x="47" y="40" text-anchor="middle" font-size="9" fill="#eb6834" font-family="sans-serif">🔥</text>
+              <text x="47" y="52" text-anchor="middle" font-size="6.5" fill="#898781" font-family="sans-serif">소성로</text>
+              <!-- person with question marks -->
+              <circle cx="130" cy="24" r="9" fill="#e2e0d5" stroke="#c3c2b7" stroke-width="1"/>
+              <text x="130" y="28" text-anchor="middle" font-size="9" font-family="sans-serif">🧓</text>
+              <text x="130" y="44" text-anchor="middle" font-size="8" fill="#898781" font-family="sans-serif">숙련자</text>
+              <text x="155" y="22" font-size="9" fill="#d03b3b" font-family="sans-serif">?</text>
+              <text x="163" y="30" font-size="9" fill="#d03b3b" font-family="sans-serif">?</text>
+              <text x="148" y="36" font-size="9" fill="#d03b3b" font-family="sans-serif">?</text>
+              <!-- paper report -->
+              <rect x="195" y="14" width="48" height="44" rx="4" fill="#f5f3ee" stroke="#c3c2b7" stroke-width="1"/>
+              <line x1="203" y1="26" x2="235" y2="26" stroke="#c3c2b7" stroke-width="1"/>
+              <line x1="203" y1="33" x2="235" y2="33" stroke="#c3c2b7" stroke-width="1"/>
+              <line x1="203" y1="40" x2="220" y2="40" stroke="#c3c2b7" stroke-width="1"/>
+              <text x="219" y="54" text-anchor="middle" font-size="6.5" fill="#d03b3b" font-family="sans-serif">수작업 3.8h</text>
+            </svg>
+          </div>
+        </div>
+        <div class="scene-arrow">→</div>
+        <div class="scene-card tobe">
+          <div class="scene-badge tobe-badge">✓ TO-BE · 시스템 도입 후</div>
+          <div class="scene-org">내화물사업실</div>
+          <div class="scene-title highlight">AI가 공정 파라미터를 추천하고 이상을 즉시 감지</div>
+          <div class="scene-steps">
+            <div class="scene-step gain">
+              <span class="step-icon">✓</span>
+              <span>과거 조업 데이터 학습 기반 <strong>최적 온도·분위기 자동 추천</strong></span>
+            </div>
+            <div class="scene-step gain">
+              <span class="step-icon">✓</span>
+              <span>생산계획·실적 자동 집계 리포트 → <strong>수집 시간 ▼ 3.8h 절감</strong></span>
+            </div>
+            <div class="scene-step gain">
+              <span class="step-icon">✓</span>
+              <span>이상 신호 실시간 감지 후 <strong>알림 + 원인 후보 자동 제시</strong></span>
+            </div>
+          </div>
+          <div class="scene-visual" style="padding:12px 14px;">
+            <svg viewBox="0 0 260 72" width="100%" style="max-height:72px" aria-hidden="true">
+              <!-- furnace -->
+              <rect x="8" y="12" width="50" height="48" rx="5" fill="#eef5ff" stroke="#2a78d6" stroke-width="1.2"/>
+              <rect x="16" y="20" width="34" height="30" rx="3" fill="#d6eaff" stroke="#6da7ec" stroke-width="1"/>
+              <text x="33" y="40" text-anchor="middle" font-size="9" fill="#2a78d6" font-family="sans-serif">🔥</text>
+              <!-- AI brain -->
+              <rect x="100" y="10" width="60" height="52" rx="8" fill="#d6eaff" stroke="#2a78d6" stroke-width="1.5"/>
+              <text x="130" y="28" text-anchor="middle" font-size="9" fill="#2a78d6" font-family="sans-serif">AI 엔진</text>
+              <text x="130" y="40" text-anchor="middle" font-size="10" font-family="sans-serif">🤖</text>
+              <text x="130" y="54" text-anchor="middle" font-size="6.5" fill="#256abf" font-family="sans-serif">패턴 학습·추천</text>
+              <!-- connection furnace to AI -->
+              <line x1="58" y1="36" x2="100" y2="36" stroke="#6da7ec" stroke-width="1.5"/>
+              <polygon points="96,32 100,36 96,40" fill="#6da7ec"/>
+              <!-- alerts -->
+              <rect x="178" y="10" width="74" height="24" rx="5" fill="#e8f8f0" stroke="#1baf7a" stroke-width="1"/>
+              <text x="215" y="22" text-anchor="middle" font-size="7.5" fill="#1baf7a" font-weight="bold" font-family="sans-serif">✓ 최적 파라미터 추천</text>
+              <rect x="178" y="40" width="74" height="24" rx="5" fill="#fff8e0" stroke="#eda100" stroke-width="1"/>
+              <text x="215" y="55" text-anchor="middle" font-size="7.5" fill="#c98500" font-weight="bold" font-family="sans-serif">⚡ 이상 즉시 알림</text>
+              <line x1="160" y1="28" x2="178" y2="22" stroke="#1baf7a" stroke-width="1.2"/>
+              <line x1="160" y1="44" x2="178" y2="52" stroke="#eda100" stroke-width="1.2"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 노재정비 ── -->
+      <div class="scene-divider"><span class="scene-divider-text">노재정비 · 업무 시스템 구축</span></div>
+      <div class="scene-row">
+        <div class="scene-card asis">
+          <div class="scene-badge asis-badge">⚠ AS-IS · 지금</div>
+          <div class="scene-org">노재정비사업실</div>
+          <div class="scene-title">정비 이력이 담당자 PC에만 흩어져 있다</div>
+          <div class="scene-steps">
+            <div class="scene-step pain">
+              <span class="step-icon">✕</span>
+              <span>고객사 로(爐) 정비 이력이 <strong>개인 파일·수첩</strong>에 분산 보관</span>
+            </div>
+            <div class="scene-step pain">
+              <span class="step-icon">✕</span>
+              <span>작업 계획·인원 배치를 <strong>수작업 스케줄표</strong>로 관리, 변경 시 혼선</span>
+            </div>
+            <div class="scene-step pain">
+              <span class="step-icon">✕</span>
+              <span>수명 예측 없이 <strong>사후 대응</strong> 중심 — 긴급 출동 비용·리스크 높음</span>
+            </div>
+          </div>
+          <div class="scene-visual" style="padding:12px 14px;">
+            <svg viewBox="0 0 260 72" width="100%" style="max-height:72px" aria-hidden="true">
+              <!-- scattered files -->
+              <rect x="10"  y="8"  width="38" height="28" rx="3" fill="#e2e0d5" stroke="#c3c2b7" stroke-width="1" transform="rotate(-8,29,22)"/>
+              <text x="29" y="25" text-anchor="middle" font-size="7" fill="#898781" font-family="sans-serif">이력A.xls</text>
+              <rect x="52"  y="14" width="38" height="28" rx="3" fill="#e2e0d5" stroke="#c3c2b7" stroke-width="1" transform="rotate(5,71,28)"/>
+              <text x="71" y="31" text-anchor="middle" font-size="7" fill="#898781" font-family="sans-serif">수첩메모</text>
+              <rect x="96"  y="6"  width="38" height="28" rx="3" fill="#e2e0d5" stroke="#c3c2b7" stroke-width="1" transform="rotate(-4,115,20)"/>
+              <text x="115" y="23" text-anchor="middle" font-size="7" fill="#898781" font-family="sans-serif">이력B.doc</text>
+              <!-- furnace + warning -->
+              <rect x="156" y="12" width="48" height="48" rx="6" fill="#fde8d0" stroke="#eb6834" stroke-width="1.2"/>
+              <text x="180" y="32" text-anchor="middle" font-size="14" font-family="sans-serif">🏭</text>
+              <text x="180" y="48" text-anchor="middle" font-size="7.5" fill="#d03b3b" font-family="sans-serif">긴급출동!</text>
+              <text x="215" y="20" font-size="14" font-family="sans-serif">🚨</text>
+              <text x="180" y="62" text-anchor="middle" font-size="6.5" fill="#d03b3b" font-family="sans-serif">사후대응 중심</text>
+            </svg>
+          </div>
+        </div>
+        <div class="scene-arrow">→</div>
+        <div class="scene-card tobe">
+          <div class="scene-badge tobe-badge">✓ TO-BE · 시스템 도입 후</div>
+          <div class="scene-org">노재정비사업실</div>
+          <div class="scene-title highlight">이력이 쌓일수록 수명 예측 정확도가 높아진다</div>
+          <div class="scene-steps">
+            <div class="scene-step gain">
+              <span class="step-icon">✓</span>
+              <span>전 고객사 정비 이력을 <strong>통합 DB로 관리</strong>, 신규 투입자도 즉시 조회</span>
+            </div>
+            <div class="scene-step gain">
+              <span class="step-icon">✓</span>
+              <span>디지털 스케줄러로 작업 계획·인원 배치 <strong>자동화, 변경 이력 보존</strong></span>
+            </div>
+            <div class="scene-step gain">
+              <span class="step-icon">✓</span>
+              <span>AI 수명 예측 모델로 <strong>정비 시점 사전 안내</strong> → 긴급 출동 감소</span>
+            </div>
+          </div>
+          <div class="scene-visual" style="padding:12px 14px;">
+            <svg viewBox="0 0 260 72" width="100%" style="max-height:72px" aria-hidden="true">
+              <!-- DB stack -->
+              <ellipse cx="44" cy="20" rx="28" ry="8" fill="#d6eaff" stroke="#2a78d6" stroke-width="1.2"/>
+              <rect x="16" y="20" width="56" height="32" fill="#d6eaff" stroke="#2a78d6" stroke-width="1.2"/>
+              <ellipse cx="44" cy="52" rx="28" ry="8" fill="#cde2fb" stroke="#2a78d6" stroke-width="1.2"/>
+              <text x="44" y="38" text-anchor="middle" font-size="7" fill="#256abf" font-weight="bold" font-family="sans-serif">통합 이력 DB</text>
+              <!-- AI predict -->
+              <rect x="100" y="10" width="60" height="52" rx="8" fill="#e8f8f0" stroke="#1baf7a" stroke-width="1.5"/>
+              <text x="130" y="28" text-anchor="middle" font-size="8" fill="#1baf7a" font-weight="bold" font-family="sans-serif">수명 예측 AI</text>
+              <text x="130" y="42" text-anchor="middle" font-size="10" font-family="sans-serif">📈</text>
+              <text x="130" y="56" text-anchor="middle" font-size="6.5" fill="#199e70" font-family="sans-serif">사전 정비 알림</text>
+              <line x1="72" y1="36" x2="100" y2="36" stroke="#6da7ec" stroke-width="1.5"/>
+              <polygon points="96,32 100,36 96,40" fill="#6da7ec"/>
+              <!-- outcome boxes -->
+              <rect x="178" y="10" width="72" height="22" rx="5" fill="#e8f8f0" stroke="#1baf7a" stroke-width="1"/>
+              <text x="214" y="23" text-anchor="middle" font-size="7.5" fill="#1baf7a" font-weight="bold" font-family="sans-serif">✓ 정비 시점 사전 통보</text>
+              <rect x="178" y="38" width="72" height="22" rx="5" fill="#eef5ff" stroke="#2a78d6" stroke-width="1"/>
+              <text x="214" y="51" text-anchor="middle" font-size="7.5" fill="#2a78d6" font-weight="bold" font-family="sans-serif">✓ 긴급출동 리스크 ↓</text>
+              <line x1="160" y1="28" x2="178" y2="21" stroke="#1baf7a" stroke-width="1.2"/>
+              <line x1="160" y1="44" x2="178" y2="49" stroke="#2a78d6" stroke-width="1.2"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.scene-section -->
+  </div><!-- /.card -->
+
+  <!-- ─── SECTION 5: 일하는 모습 예시 (Day in the Life) ─── -->
+  <div class="card">
+    <div class="section-strip">
+      <span class="section-num">Section 05</span>
+      <span class="section-headline"><em>하루가 어떻게 바뀌는가</em> — AI 도입 후 업무 흐름 예시</span>
+    </div>
+
+    <div class="three-col" style="gap:16px;">
+
+      <!-- 플랜트 담당자 하루 -->
+      <div style="border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+        <div style="background:var(--series-1); padding:14px 16px;">
+          <div style="font-size:10px; font-weight:800; letter-spacing:0.08em; color:rgba(255,255,255,0.7); margin-bottom:4px; text-transform:uppercase;">플랜트 공사 담당자</div>
+          <div style="font-size:14px; font-weight:800; color:#fff; line-height:1.35;">AI 도입 후 하루 11.9h 돌아온다</div>
+        </div>
+        <div style="padding:16px; display:grid; gap:10px;">
+          <div style="display:flex; gap:10px; align-items:flex-start;">
+            <div style="background:var(--seq-100); border-radius:6px; padding:4px 8px; font-size:11px; font-weight:800; color:var(--series-1); white-space:nowrap; min-width:52px; text-align:center;">08:00</div>
+            <div style="font-size:13px; color:var(--text-secondary); line-height:1.5;"><strong style="color:var(--text-primary);">대시보드 오픈</strong> — 전날 현장 변경사항이 자동 반영된 공정 현황 한눈에 확인</div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start;">
+            <div style="background:var(--seq-100); border-radius:6px; padding:4px 8px; font-size:11px; font-weight:800; color:var(--series-1); white-space:nowrap; min-width:52px; text-align:center;">09:30</div>
+            <div style="font-size:13px; color:var(--text-secondary); line-height:1.5;"><strong style="color:var(--text-primary);">인력 재배치 알림</strong> — 일정 지연 위험 구간 AI 감지, 대체 인력 옵션 자동 제안</div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start;">
+            <div style="background:var(--seq-100); border-radius:6px; padding:4px 8px; font-size:11px; font-weight:800; color:var(--series-1); white-space:nowrap; min-width:52px; text-align:center;">14:00</div>
+            <div style="font-size:13px; color:var(--text-secondary); line-height:1.5;"><strong style="color:var(--text-primary);">계약·실적 자동 대조</strong> — 클릭 한 번으로 정산 초안 생성, 검토만 하면 됨</div>
+          </div>
+          <div style="margin-top:4px; padding:10px 12px; background:var(--surface-page); border-radius:8px; border-left:3px solid var(--series-3);">
+            <div style="font-size:12px; font-weight:700; color:var(--series-3); margin-bottom:3px;">확보된 시간으로</div>
+            <div style="font-size:12px; color:var(--text-secondary);">고객사 미팅 준비, 신규 공사 견적 검토, 팀원 기술 지도</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 내화물 생산관리자 하루 -->
+      <div style="border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+        <div style="background:var(--series-3); padding:14px 16px;">
+          <div style="font-size:10px; font-weight:800; letter-spacing:0.08em; color:rgba(255,255,255,0.7); margin-bottom:4px; text-transform:uppercase;">내화물 생산관리자</div>
+          <div style="font-size:14px; font-weight:800; color:#fff; line-height:1.35;">엑셀 집계 3.8h → AI 리포트 5분</div>
+        </div>
+        <div style="padding:16px; display:grid; gap:10px;">
+          <div style="display:flex; gap:10px; align-items:flex-start;">
+            <div style="background:#d5f5e8; border-radius:6px; padding:4px 8px; font-size:11px; font-weight:800; color:var(--series-3); white-space:nowrap; min-width:52px; text-align:center;">07:50</div>
+            <div style="font-size:13px; color:var(--text-secondary); line-height:1.5;"><strong style="color:var(--text-primary);">자동 생산 리포트</strong> — 전일 실적·계획 대비를 시스템이 자동 집계해 메일로 도착</div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start;">
+            <div style="background:#d5f5e8; border-radius:6px; padding:4px 8px; font-size:11px; font-weight:800; color:var(--series-3); white-space:nowrap; min-width:52px; text-align:center;">10:00</div>
+            <div style="font-size:13px; color:var(--text-secondary); line-height:1.5;"><strong style="color:var(--text-primary);">소성로 파라미터 추천</strong> — AI가 오늘 배치의 최적 온도·시간 제안, 숙련자 확인 후 적용</div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start;">
+            <div style="background:#d5f5e8; border-radius:6px; padding:4px 8px; font-size:11px; font-weight:800; color:var(--series-3); white-space:nowrap; min-width:52px; text-align:center;">15:30</div>
+            <div style="font-size:13px; color:var(--text-secondary); line-height:1.5;"><strong style="color:var(--text-primary);">이상 감지 알림</strong> — 센서 데이터 편차 발생, 원인 후보 3가지와 대응 이력 자동 표시</div>
+          </div>
+          <div style="margin-top:4px; padding:10px 12px; background:var(--surface-page); border-radius:8px; border-left:3px solid var(--series-3);">
+            <div style="font-size:12px; font-weight:700; color:var(--series-3); margin-bottom:3px;">확보된 시간으로</div>
+            <div style="font-size:12px; color:var(--text-secondary);">품질 개선 실험 기획, 신제품 배합 연구, 고객사 기술 지원</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 노재정비 현장감독 하루 -->
+      <div style="border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+        <div style="background:var(--series-2); padding:14px 16px;">
+          <div style="font-size:10px; font-weight:800; letter-spacing:0.08em; color:rgba(255,255,255,0.7); margin-bottom:4px; text-transform:uppercase;">노재정비 현장감독</div>
+          <div style="font-size:14px; font-weight:800; color:#fff; line-height:1.35;">경험이 DB에 쌓여 조직 자산이 된다</div>
+        </div>
+        <div style="padding:16px; display:grid; gap:10px;">
+          <div style="display:flex; gap:10px; align-items:flex-start;">
+            <div style="background:#fde8d8; border-radius:6px; padding:4px 8px; font-size:11px; font-weight:800; color:var(--series-2); white-space:nowrap; min-width:52px; text-align:center;">08:30</div>
+            <div style="font-size:13px; color:var(--text-secondary); line-height:1.5;"><strong style="color:var(--text-primary);">정비 이력 조회</strong> — 신규 투입 현장이라도 DB에서 동일 로(爐) 과거 이력 즉시 확인</div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start;">
+            <div style="background:#fde8d8; border-radius:6px; padding:4px 8px; font-size:11px; font-weight:800; color:var(--series-2); white-space:nowrap; min-width:52px; text-align:center;">11:00</div>
+            <div style="font-size:13px; color:var(--text-secondary); line-height:1.5;"><strong style="color:var(--text-primary);">수명 예측 리포트</strong> — 고객사와 다음 정비 시점 협의 시 AI 예측 데이터 근거로 제시</div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start;">
+            <div style="background:#fde8d8; border-radius:6px; padding:4px 8px; font-size:11px; font-weight:800; color:var(--series-2); white-space:nowrap; min-width:52px; text-align:center;">16:00</div>
+            <div style="font-size:13px; color:var(--text-secondary); line-height:1.5;"><strong style="color:var(--text-primary);">작업 일지 자동 저장</strong> — 오늘 정비 내용이 DB에 누적, 후임자·동료가 이어받을 수 있음</div>
+          </div>
+          <div style="margin-top:4px; padding:10px 12px; background:var(--surface-page); border-radius:8px; border-left:3px solid var(--series-2);">
+            <div style="font-size:12px; font-weight:700; color:var(--series-2); margin-bottom:3px;">확보된 시간으로</div>
+            <div style="font-size:12px; color:var(--text-secondary);">고객사 관계 강화, 후임 현장요원 멘토링, 신규 정비 공법 검토</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  OLD_REMOVED_END -->
+
+  <!-- ─── SECTION 6: 인재 + 감축 구성비 ─── -->
+  <div class="two-col">
+
+    <!-- 감축 구성비 -->
+    <div class="card">
+      <div class="section-strip">
+        <span class="section-num">Section 06</span>
+        <span class="section-headline">플랜트가 <em>절반 이상</em>의 절감을 이끈다</span>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-swatch" style="background:var(--baseline)"></div>
+          <span>TO-BE 잔여시간</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-swatch" style="background:var(--delta-dn)"></div>
+          <span>감축 시간</span>
+        </div>
+      </div>
+
+      <div class="hbar-list" id="hbar-reduction" role="img" aria-label="조직별 감축 시간 구성"></div>
+
+      <div class="total-bar">
+        <div>
+          <div class="total-label">총 감축</div>
+          <div class="total-detail">3개 조직 합산 / 일평균</div>
+        </div>
+        <div style="text-align:right">
+          <div class="total-value">▼ 19.4h</div>
+          <div class="total-detail" style="text-align:right">38.2% 감축</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 인재 육성 -->
+    <div class="card">
+      <div class="section-strip">
+        <span class="section-num">Section 07</span>
+        <span class="section-headline">AI 전문가 <em>23명</em>을 기반으로 일하는 방식을 근본적으로 바꾼다</span>
+      </div>
+
+      <div class="talent-panel">
+        <div class="talent-stat">
+          <div class="talent-org">기초소재사업본부</div>
+          <div class="talent-num" style="color:var(--series-1)">23<span class="unit">명</span></div>
+          <div class="talent-meter">
+            <div class="talent-meter-fill" style="width:26.4%"></div>
+          </div>
+          <div class="talent-caption">전사 87명의 26.4%</div>
+        </div>
+        <div class="talent-stat">
+          <div class="talent-org">전사 전체</div>
+          <div class="talent-num" style="color:var(--text-secondary)">87<span class="unit">명</span></div>
+          <div class="talent-caption" style="margin-top:8px">딥러닝 · AI 에이전트 활용 과정 수료</div>
+        </div>
+      </div>
+
+      <div class="action-card" style="margin-top:16px">
+        <div class="action-title">수료 후 실행계획</div>
+        <div class="action-body">
+          수료자는 소속 실의 PI/AX 과제를 리뷰하고,
+          과제오너와 <strong>AI 활용 방안을 직접 협의</strong>합니다.
+          지식이 현장 과제로 즉시 연결되는 구조를 만듭니다.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- /.dash-body -->
+
+<div class="tooltip" id="tooltip" role="tooltip"></div>
+
+<script>
+/* ─── Theme ─── */
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  btn.textContent = isDark ? '🌙 다크 모드' : '☀️ 라이트 모드';
+}
+
+/* ─── Table toggle ─── */
+function toggleTable(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+  const btn = el.previousElementSibling;
+  if (btn && btn.classList.contains('table-toggle-btn'))
+    btn.textContent = el.classList.contains('open') ? '표 닫기' : '표 보기';
+}
+
+/* ─── Tooltip ─── */
+const tip = document.getElementById('tooltip');
+function showTip(e, txt) {
+  tip.textContent = txt; tip.classList.add('show'); moveTip(e);
+}
+function moveTip(e) {
+  tip.style.left = Math.min(e.clientX + 14, window.innerWidth - 240) + 'px';
+  tip.style.top = (e.clientY - 8) + 'px';
+}
+function hideTip() { tip.classList.remove('show'); }
+
+/* ─── Dumbbell ─── */
+(function() {
+  const data = [
+    { label: '노재정비', asis: 7.9,  tobe: 4.2 },
+    { label: '플랜트',  asis: 30.0, tobe: 18.1 },
+    { label: '내화물',  asis: 12.8, tobe: 9.0 },
+  ];
+  const max = 32;
+  const c = document.getElementById('dumbbell-time');
+  data.forEach(d => {
+    const pA = (d.asis / max) * 100;
+    const pT = (d.tobe / max) * 100;
+    const delta = (d.asis - d.tobe).toFixed(1);
+    const row = document.createElement('div'); row.className = 'dumbbell-row';
+    const lbl = document.createElement('div'); lbl.className = 'dumbbell-org'; lbl.textContent = d.label;
+    const track = document.createElement('div'); track.className = 'dumbbell-track';
+    const conn = document.createElement('div'); conn.className = 'dumbbell-connector';
+    conn.style.left = pT + '%'; conn.style.width = (pA - pT) + '%';
+    const dA = document.createElement('div'); dA.className = 'dot-asis'; dA.style.left = pA + '%';
+    const dT = document.createElement('div'); dT.className = 'dot-tobe'; dT.style.left = pT + '%';
+    track.append(conn, dA, dT);
+    track.addEventListener('mouseenter', e => showTip(e, d.label + '\nAS-IS: ' + d.asis + 'h\nTO-BE: ' + d.tobe + 'h\n감축: ▼' + delta + 'h'));
+    track.addEventListener('mousemove', moveTip);
+    track.addEventListener('mouseleave', hideTip);
+    const vals = document.createElement('div'); vals.className = 'dumbbell-vals';
+    vals.innerHTML = '<span class="val-asis">' + d.asis + 'h</span><span class="val-delta">▼ ' + delta + 'h</span><span class="val-tobe">' + d.tobe + 'h</span>';
+    row.append(lbl, track, vals);
+    c.appendChild(row);
+  });
+})();
+
+/* ─── Column chart (PI 투자) ─── */
+(function() {
+  const data = [
+    { label: '라임/화성\n조업연계',   val: 585051  },
+    { label: '노재정비\n업무시스템',  val: 1029006 },
+    { label: '내화물\n조업고도화',   val: 2026697 },
+    { label: '플랜트공사\n관리시스템', val: 1314832 },
+  ];
+  const maxVal = 2026697;
+  const CHART_H = 140;
+  const colors = ['--series-1','--series-2','--series-3','--series-4'];
+
+  const wrap = document.getElementById('vcol-budget');
+  wrap.className = 'vcol-wrap';
+
+  // baseline
+  const bl = document.createElement('div'); bl.className = 'vcol-baseline';
+  wrap.appendChild(bl);
+
+  // gridlines
+  const glWrap = document.createElement('div'); glWrap.className = 'vcol-gridlines';
+  [0, 500000, 1000000, 1500000, 2000000].forEach(v => {
+    const pct = (v / maxVal) * 100;
+    const gl = document.createElement('div'); gl.className = 'vcol-gl';
+    gl.style.bottom = pct + '%';
+    const yt = document.createElement('span'); yt.className = 'vcol-ytick';
+    yt.style.bottom = pct + '%';
+    yt.textContent = v === 0 ? '0' : (v / 10000) + '만';
+    glWrap.append(gl, yt);
+  });
+  wrap.appendChild(glWrap);
+
+  data.forEach((d, i) => {
+    const h = (d.val / maxVal) * CHART_H;
+    const g = document.createElement('div'); g.className = 'vcol-group';
+    const vl = document.createElement('div'); vl.className = 'vcol-val';
+    vl.textContent = Math.round(d.val / 10000) + '만';
+    const bar = document.createElement('div'); bar.className = 'vcol-bar';
+    bar.style.height = h + 'px';
+    bar.style.background = 'var(' + colors[i] + ')';
+    bar.addEventListener('mouseenter', e => { bar.style.opacity = '.75'; showTip(e, d.label.replace('\n',' ') + '\n' + d.val.toLocaleString() + '천원'); });
+    bar.addEventListener('mousemove', moveTip);
+    bar.addEventListener('mouseleave', () => { bar.style.opacity = '1'; hideTip(); });
+    const xl = document.createElement('div'); xl.className = 'vcol-xlabel';
+    xl.innerHTML = d.label.replace('\n','<br>');
+    g.append(vl, bar, xl);
+    wrap.appendChild(g);
+  });
+})();
+
+/* ─── Horizontal bar (감축 구성비) ─── */
+(function() {
+  const data = [
+    { label: '플랜트',  tobe: 18.1, cut: 11.9, total: 30.0 },
+    { label: '내화물',  tobe: 9.0,  cut: 3.8,  total: 12.8 },
+    { label: '노재정비', tobe: 4.2,  cut: 3.7,  total: 7.9  },
+  ];
+  const maxT = 30.0;
+  const c = document.getElementById('hbar-reduction');
+  data.forEach(d => {
+    const pT = (d.tobe / maxT) * 100;
+    const pC = (d.cut  / maxT) * 100;
+    const item = document.createElement('div'); item.className = 'hbar-item';
+    const meta = document.createElement('div'); meta.className = 'hbar-meta';
+    meta.innerHTML = '<span class="hbar-name">' + d.label + '</span><span class="hbar-nums">' + d.total + 'h → ' + d.tobe + 'h</span>';
+    const track = document.createElement('div'); track.className = 'hbar-track';
+    const ft = document.createElement('div'); ft.className = 'hbar-fill-tobe'; ft.style.width = pT + '%';
+    const fc = document.createElement('div'); fc.className = 'hbar-fill-cut'; fc.style.left = pT + '%'; fc.style.width = pC + '%';
+    const gap = document.createElement('div'); gap.className = 'hbar-gap'; gap.style.left = pT + '%';
+    track.append(ft, fc, gap);
+    track.addEventListener('mouseenter', e => showTip(e, d.label + '\n잔여: ' + d.tobe + 'h\n감축: ▼' + d.cut + 'h'));
+    track.addEventListener('mousemove', moveTip);
+    track.addEventListener('mouseleave', hideTip);
+    const cl = document.createElement('div'); cl.className = 'hbar-cut-label'; cl.textContent = '▼ ' + d.cut + 'h';
+    item.append(meta, track, cl);
+    c.appendChild(item);
+  });
+})();
+</script>
+</body>
+</html>
